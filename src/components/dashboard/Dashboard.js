@@ -6,12 +6,16 @@ import { connect } from 'react-redux';
 
 class Dashboard extends Component {
     render() {
-        const { bills } = this.props;
+        const { bills, cities } = this.props;
         return (
             <div className="dashboard">
                 <h1 className="net">You have <span>$7000</span> safe to spend</h1>
                 <div className="controls">
-                    <h2>Austin</h2>
+                    {cities && cities.map(city => {
+                    return (
+                        <h2 key={city.id}>{city.name}</h2>
+                    )
+                })}
                     <Link to='/add'>Add Bill</Link>
                 </div>
                 <BillList bills={bills}/>
@@ -22,7 +26,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        bills: state.bill.bills
+        bills: state.bill.bills,
+        cities: state.city.cities
     }
 }
 
