@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import BillList from '../bills/BillList';
 import { connect } from 'react-redux';
-
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 
 class Dashboard extends Component {
     render() {
@@ -25,10 +26,16 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
-        bills: state.bill.bills,
+        bills: state.firestore.ordered.bills,
         cities: state.city.cities
     }
 }
 
-export default connect(mapStateToProps)(Dashboard);
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection: 'bills' }
+    ])
+)(Dashboard);
