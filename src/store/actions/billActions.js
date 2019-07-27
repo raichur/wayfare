@@ -1,4 +1,4 @@
-const createBill = (bill) => {
+export const createBill = (bill) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('bills').add({
@@ -13,7 +13,7 @@ const createBill = (bill) => {
     }
 };
 
-const updateBill = (bill) => {
+export const updateBill = (bill) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('bills').doc(bill.id).update({
@@ -26,7 +26,7 @@ const updateBill = (bill) => {
     }
 };
 
-const deleteBill = (bill) => {
+export const deleteBill = (bill) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('bills').doc(bill.id).delete().then(() => {
@@ -36,5 +36,3 @@ const deleteBill = (bill) => {
         })
     }
 };
-
-export { createBill, updateBill, deleteBill };
