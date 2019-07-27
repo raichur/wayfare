@@ -4,14 +4,15 @@ import LoginLinks from './LoginLinks';
 import LogoutLinks from './LogoutLinks';
 import { connect } from 'react-redux';
 
-const Nav = () => {
+const Nav = (props) => {
+    const { auth } = props;
+    const links = auth.uid ? <LoginLinks/> : <LogoutLinks/>
     return (
         <nav>
             <ul>
                 <Link to='/' className="title">Netcome</Link>
                 <div className="right">
-                    <LogoutLinks />
-                    <LoginLinks />
+                    {links}
                 </div>
             </ul>
         </nav>
@@ -19,9 +20,8 @@ const Nav = () => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
-
+        auth: state.firebase.auth
     }
 }
 
