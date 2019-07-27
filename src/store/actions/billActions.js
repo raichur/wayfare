@@ -1,6 +1,6 @@
 export const createBill = (bill) => {
-    return (dispatch, getState) => {
-        // Make call to db
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        
         dispatch({ type: 'CREATE_BILL', bill });
     }
 };
