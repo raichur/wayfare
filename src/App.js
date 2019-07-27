@@ -1,10 +1,14 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Nav from './components/layout/Nav'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Netcome</h1>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Nav />
+      </div>
+    </BrowserRouter>
   );
 }
 
