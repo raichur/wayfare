@@ -13,20 +13,27 @@ class EditBill extends Component {
     }
 
     handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
+        if (e.target.id === "cost") {
+            this.setState({
+                cost: Number(e.target.value)
+            })
+        } else {
+            this.setState({
+                [e.target.id]: e.target.value
+            })
+        }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
+        console.log(this.state)
         this.props.updateBill(this.state);
     }
 
     render() {
         return (
             <div>
-                <h2>Edit Bill {this.props.match.params.id}</h2>
+                <h2>Edit Bill</h2>
                 <form onSubmit={this.handleSubmit}>
                     <div className="input">
                         <label htmlFor="name">Name</label>
@@ -38,7 +45,7 @@ class EditBill extends Component {
                     </div>
                     <div className="input">
                         <label htmlFor="cost">Cost</label>
-                        <input type="number" step=".01" id="cost" placeholder={this.props.bill ? this.props.bill.cost : null} onChange={this.handleChange}/>
+                        <input type="number" step="10" id="cost" placeholder={this.props.bill ? this.props.bill.cost : null} onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="color">Color</label>

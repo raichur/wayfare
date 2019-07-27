@@ -26,4 +26,15 @@ const updateBill = (bill) => {
     }
 };
 
-export { createBill, updateBill };
+const deleteBill = (bill) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('bills').doc(bill.id).delete().then(() => {
+            dispatch({ type: 'DELETE_BILL', bill });
+        }).catch((err) => {
+            dispatch({ type: 'DELETE_BILL_ERROR', err});
+        })
+    }
+};
+
+export { createBill, updateBill, deleteBill };
