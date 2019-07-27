@@ -42,10 +42,6 @@ class editAccount extends Component {
                         <label htmlFor="password">New Password</label>
                         <input type="password" id="password" onChange={this.handleChange}/>
                     </div>
-                    <div className="input">
-                        <label htmlFor="conf-password">Confirm New Password</label>
-                        <input type="password" id="conf-password" onChange={this.handleChange}/>
-                    </div>
                     <button type="submit">Save Changes</button>
                 </form>
             </div>
