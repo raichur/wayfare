@@ -182,12 +182,9 @@ form button:hover {
 /* Footer */
 
 footer {
-  opacity: 0.5;
+  font-size: 0.8rem;
+  opacity: 0.6;
   margin: var(--base-margin) auto;
-}
-
-footer:hover {
-  opacity: 1;
 }
 
 /* Media Queries */

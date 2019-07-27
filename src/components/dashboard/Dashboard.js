@@ -17,7 +17,8 @@ class Dashboard extends Component {
                         <h2 key={city.id}>{city.name}</h2>
                     )
                 })}
-                    <Link to='/add'>Add Bill</Link>
+                    <Link to='/'>+ Add City</Link>
+                    <Link to='/add'>+ Add Bill</Link>
                 </div>
                 <BillList bills={bills}/>
             </div>
@@ -36,6 +37,6 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: 'bills' }
+        { collection: 'bills', where: [['cityid', '==', 1]], orderBy: [['cost', 'desc']]}
     ])
 )(Dashboard);

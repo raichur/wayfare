@@ -1,4 +1,4 @@
-export const createBill = (bill) => {
+const createBill = (bill) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('bills').add({
@@ -12,3 +12,18 @@ export const createBill = (bill) => {
         })
     }
 };
+
+const updateBill = (bill) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('bills').doc(bill.id).update({
+            ...bill,
+        }).then(() => {
+            dispatch({ type: 'UPDATE_BILL', bill });
+        }).catch((err) => {
+            dispatch({ type: 'UPDATE_BILL_ERROR', err});
+        })
+    }
+};
+
+export { createBill, updateBill };

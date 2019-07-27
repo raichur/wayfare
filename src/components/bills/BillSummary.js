@@ -8,7 +8,7 @@ const BillSummary = ({bill}) => {
             <td className="cost">${bill.cost}</td>
             <td>{bill.description}</td>
             <td>
-                <Link to="/edit/1">Edit</Link>
+                <Link to={'/edit/' + bill.id} key={bill.id}>Edit</Link>
                 <Link to="/">Delete</Link>
             </td>
         </tr>
