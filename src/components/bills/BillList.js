@@ -3,7 +3,7 @@ import BillSummary from './BillSummary';
 
 const BillList = () => {
     return (
-        <ul class="bills">
+        <ul className="bills">
             <BillSummary />
             <BillSummary />
             <BillSummary />

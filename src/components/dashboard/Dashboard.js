@@ -4,7 +4,7 @@ import BillList from '../bills/BillList';
 class Dashboard extends Component {
     render() {
         return (
-            <div class="dashboard">
+            <div className="dashboard">
                 <h1>Austin</h1>
                 <BillList />
             </div>

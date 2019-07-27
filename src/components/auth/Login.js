@@ -2,15 +2,19 @@ import React, { Component } from 'react'
 
 class Login extends Component {
     state = {
-
+        email: '',
+        password: ''
     }
 
     handleChange = (e) => {
-        console.log(e);
+        this.setState({
+            [e.target.id]: e.target.value
+        })
     }
 
     handleSubmit = (e) => {
-        console.log(e);
+        e.preventDefault();
+        console.log(this.state);
     }
 
     render() {
@@ -18,7 +22,7 @@ class Login extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <div className="input">
-                        <label htmlFor="email"s>Email</label>
+                        <label htmlFor="email">Email</label>
                         <input type="email" id="email" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
