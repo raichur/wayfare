@@ -7,7 +7,7 @@ const BillSummary = () => {
             <h2>Bill Name</h2>
             <p>Bill description</p>
             <p>$30</p>
-            <Link to="/">Edit</Link>
+            <Link to="/edit/1">Edit</Link>
             <Link to="/">Delete</Link>
         </li>
     )
