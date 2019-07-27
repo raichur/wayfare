@@ -22,6 +22,7 @@ class Signup extends Component {
     render() {
         return (
             <div>
+                <h1>Signup</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className="input">
                         <label htmlFor="firstName">First Name</label>
@@ -39,7 +40,7 @@ class Signup extends Component {
                         <label htmlFor="password">Password</label>
                         <input type="password" id="password" onChange={this.handleChange}/>
                     </div>
-                    <button type="submit">Login</button>
+                    <button type="submit">Create Account</button>
                 </form>
             </div>
         )
