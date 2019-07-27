@@ -1,23 +1,13 @@
 import React from 'react';
+import BillSummary from './BillSummary';
 
 const BillList = () => {
     return (
-        <div class="bills">
-            <ul>
-                <li>
-                    <h2>Bill Name</h2>
-                    <p>$30</p>
-                </li>
-                <li>
-                    <h2>Bill Name</h2>
-                    <p>$30</p>
-                </li>
-                <li>
-                    <h2>Bill Name</h2>
-                    <p>$30</p>
-                </li>
-            </ul>
-        </div>
+        <ul class="bills">
+            <BillSummary />
+            <BillSummary />
+            <BillSummary />
+        </ul>
     )
 }
 

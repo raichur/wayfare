@@ -5,6 +5,7 @@ class Dashboard extends Component {
     render() {
         return (
             <div class="dashboard">
+                <h1>Austin</h1>
                 <BillList />
             </div>
         )
