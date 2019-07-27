@@ -9,8 +9,13 @@ const billReducer = (state = initState, action) => {
     switch (action.type) {
         case 'CREATE_BILL':
             console.log('created bill', action.bill);
+            return state;
+        case 'CREATE_BILL_ERROR':
+            console.error('error creating bill: ', action.err);
+            return state;
+        default:
+            return state;
     }
-    return state;
 }
 
 export default billReducer;
