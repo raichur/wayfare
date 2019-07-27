@@ -7,6 +7,7 @@
   --color-inpfocus: rgba(65,195,221,0.1);
   --color-text: black;
   --color-bg: white;
+  --color-error: #f23c76;
   --base-margin: 40px;
   --desktop-size: 700px;
   --mobile-size: calc(100% - 50px);
@@ -171,6 +172,7 @@ form .input {
 }
 
 form button {
+  outline: none;
   padding: .9em .75em;
   width: 100%;
   border: 0;
@@ -183,6 +185,10 @@ form button {
 
 form button:hover {
   background: var(--color-brand);
+}
+
+form .error {
+  color: var(--color-error);
 }
 
 /* Footer */
