@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { updateBill } from '../../store/actions/billActions';
@@ -30,6 +31,10 @@ class EditBill extends Component {
     }
 
     render() {
+        const { auth } = this.props;
+        if (!auth.uid) {
+            return <Redirect to='/login' />
+        }
         return (
             <div>
                 <h2>Edit Bill</h2>
@@ -67,9 +72,10 @@ const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
     const bills = state.firestore.data.bills;
     const bill = bills ? bills[id] : null;
+    const auth = state.firebase.auth
     state = ownProps.bill;
     return {
-        bill: bill
+        bill, auth
     }
 }
 

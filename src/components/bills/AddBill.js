@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { createBill } from '../../store/actions/billActions';
 
 class AddBill extends Component {
@@ -23,6 +24,10 @@ class AddBill extends Component {
     }
 
     render() {
+        const { auth } = this.props;
+        if (!auth.uid) {
+            return <Redirect to='/login' />
+        }
         return (
             <div>
                 <h2>Add Bill</h2>
@@ -50,10 +55,16 @@ class AddBill extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         createBill: (bill) => dispatch(createBill(bill))
     }
 }
 
-export default connect(null, mapDispatchToProps)(AddBill);
+export default connect(mapStateToProps, mapDispatchToProps)(AddBill);

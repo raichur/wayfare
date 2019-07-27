@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import BillList from '../bills/BillList';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -7,7 +7,10 @@ import { compose } from 'redux';
 
 class Dashboard extends Component {
     render() {
-        const { bills, cities } = this.props;
+        const { bills, cities, auth } = this.props;
+        if (!auth.uid) {
+            return <Redirect to='/login' />
+        }
         return (
             <div className="dashboard">
                 <h1 className="net">You have <span>$7000</span> safe to spend</h1>
@@ -29,7 +32,8 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
     return {
         bills: state.firestore.ordered.bills,
-        cities: state.city.cities
+        cities: state.city.cities,
+        auth: state.firebase.auth
     }
 }
 
