@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 const LoginLinks = () => {
     return (
-        <ul>
+        <div className="links">
             <li><NavLink to='/account'>JR</NavLink></li>
             <li><NavLink to='/'>Logout</NavLink></li>
-        </ul>
+        </div>
     )
 }
 

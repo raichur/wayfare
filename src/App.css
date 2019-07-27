@@ -1,33 +1,52 @@
+/* Basic */
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
+  font-family: 'SF Mono';
+  width: 700px;
+  margin: 0 auto;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+a {
+  color: #80b543;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Nav */
+
+nav {
+  margin: 0;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  margin: 20px auto;
 }
 
-.App-link {
-  color: #61dafb;
+nav .title {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  flex-grow: 2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav .right {
+  list-style: none;
+  display: flex;
+  justify-content: right;
+}
+
+nav ul .links {
+  display: flex;
+  align-items: flex-end;
+}
+
+nav ul li , nav .title {
+  margin: 0 15px;
 }

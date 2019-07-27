@@ -7,9 +7,11 @@ const Nav = () => {
     return (
         <nav>
             <ul>
-                <Link to='/'>Netcome</Link>
-                <LoginLinks />
-                <LogoutLinks />
+                <Link to='/' className="title">Netcome</Link>
+                <div className="right">
+                    <LoginLinks />
+                    <LogoutLinks />
+                </div>
             </ul>
         </nav>
     )
