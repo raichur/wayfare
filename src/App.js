@@ -4,6 +4,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import Nav from './components/layout/Nav'
 import EditBill from './components/bills/EditBill'
 import Login from './components/auth/Login'
+import Signup from './components/auth/Signup'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route exact path='/' component={Dashboard} />
           <Route path='/edit/:id' component={EditBill} />
           <Route path='/login' component={Login} />
+          <Route path='/signup' component={Signup} />
         </Switch>
       </div>
     </BrowserRouter>
