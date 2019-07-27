@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createBill } from '../../store/actions/billActions';
 
 class AddBill extends Component {
     state = {
+        cityid: 1,
         name: '',
         description: '',
         cost: 0,
@@ -16,7 +19,7 @@ class AddBill extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        this.props.createBill(this.state);
     }
 
     render() {
@@ -26,15 +29,15 @@ class AddBill extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="input">
                         <label htmlFor="name">Name</label>
-                        <input type="text" id="name" onChange={this.handleChange}/>
+                        <input type="text" id="name" placeholder="Rent" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="description">Description</label>
-                        <textarea id="description" rows="3" onChange={this.handleChange}/>
+                        <textarea id="description" placeholder="2 bedroom place in downtown Austin" rows="3" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="cost">Cost</label>
-                        <input type="number" id="cost" onChange={this.handleChange}/>
+                        <input type="number" id="cost" placeholder="1400" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="color">Color</label>
@@ -47,4 +50,10 @@ class AddBill extends Component {
     }
 }
 
-export default AddBill
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createBill: (bill) => dispatch(createBill(bill))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(AddBill);
