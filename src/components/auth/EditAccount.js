@@ -20,7 +20,7 @@ class editAccount extends Component {
     render() {
         return (
             <div>
-                <h1>Edit account</h1>
+                <h2>Edit account</h2>
                 <form onSubmit={this.handleSubmit}>
                     <div className="input">
                         <label htmlFor="firstName">First Name</label>

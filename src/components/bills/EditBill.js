@@ -25,25 +25,28 @@ class EditBill extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div className="input">
-                    <label htmlFor="name">Name {this.state.id}</label>
-                    <input type="text" id="name"/>
-                </div>
-                <div className="input">
-                    <label htmlFor="description">Description</label>
-                    <textarea id="description"/>
-                </div>
-                <div className="input">
-                    <label htmlFor="cost">Cost</label>
-                    <input type="number" id="cost"/>
-                </div>
-                <div className="input">
-                    <label htmlFor="color">Color</label>
-                    <input type="color" id="color"/>
-                </div>
-                <button type="submit">Submit Changes</button>
-            </form>
+            <div>
+                <h2>Edit Bill</h2>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="input">
+                        <label htmlFor="name">Name {this.state.id}</label>
+                        <input type="text" id="name"/>
+                    </div>
+                    <div className="input">
+                        <label htmlFor="description">Description</label>
+                        <textarea id="description"/>
+                    </div>
+                    <div className="input">
+                        <label htmlFor="cost">Cost</label>
+                        <input type="number" id="cost"/>
+                    </div>
+                    <div className="input">
+                        <label htmlFor="color">Color</label>
+                        <input type="color" id="color"/>
+                    </div>
+                    <button type="submit">Submit Changes</button>
+                </form>
+            </div>
         )
     }
 }

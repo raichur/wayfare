@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 
 const BillSummary = () => {
     return (
-        <li>
-            <h2>Bill Name</h2>
-            <p>Bill description</p>
-            <p>$30</p>
-            <Link to="/edit/1">Edit</Link>
-            <Link to="/">Delete</Link>
-        </li>
+        <tr>
+            <td>Bill Name</td>
+            <td className="cost">$30</td>
+            <td>Bill description</td>
+            <td>
+                <Link to="/edit/1">Edit</Link>
+                <Link to="/">Delete</Link>
+            </td>
+        </tr>
     )
 }
 

@@ -3,11 +3,21 @@ import BillSummary from './BillSummary';
 
 const BillList = () => {
     return (
-        <ul className="bills">
-            <BillSummary />
-            <BillSummary />
-            <BillSummary />
-        </ul>
+        <table className="bills">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th className="cost">Cost</th>
+                    <th>Description</th>
+                    <th>Edit/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <BillSummary />
+                <BillSummary />
+                <BillSummary />
+            </tbody>
+        </table>
     )
 }
 

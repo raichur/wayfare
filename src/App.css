@@ -1,4 +1,13 @@
 /* Basic */
+:root {
+  --color-brand: #80b543;
+  --color-div: #e6e6e6;
+  --color-divsolid: #9e9e9e;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 html, body {
   margin: 0;
@@ -12,13 +21,17 @@ html, body {
 }
 
 a {
-  color: #80b543;
+  color: var(--color-brand);
 }
 
 /* Nav */
 
 nav {
   margin: 0;
+}
+
+nav .active {
+  font-weight: bold;
 }
 
 nav ul {
@@ -47,6 +60,42 @@ nav ul .links {
   align-items: flex-end;
 }
 
-nav ul li , nav .title {
-  margin: 0 15px;
+nav ul li {
+  margin-left: 20px;
+}
+
+/* Dashboard */
+
+.bills {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+}
+
+.bills thead {
+  text-align: left;
+}
+
+.bills .cost {
+  text-align: right;
+}
+
+.bills td, .bills th {
+  vertical-align: top;
+  border-left: 1px solid var(--color-div);
+  border-right: 1px solid var(--color-div);
+  padding: .4rem .75rem;
+}
+
+.bills thead, .bills tbody {
+  border-bottom: 2px solid var(--color-divsolid);
+}
+
+.bills thead {
+  border-top: 2px solid var(--color-divsolid);
+}
+
+.bills tbody a {
+  margin-right: 10px;
 }

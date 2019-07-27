@@ -22,7 +22,7 @@ class Signup extends Component {
     render() {
         return (
             <div>
-                <h1>Signup</h1>
+                <h2>Signup</h2>
                 <form onSubmit={this.handleSubmit}>
                     <div className="input">
                         <label htmlFor="firstName">First Name</label>
