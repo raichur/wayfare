@@ -8,6 +8,8 @@
   --color-text: black;
   --color-bg: white;
   --base-margin: 40px;
+  --desktop-size: 700px;
+  --mobile-size: calc(100% - 50px);
 }
 
 * {
@@ -21,7 +23,7 @@ html, body {
 
 .App {
   font-family: 'SF Mono';
-  width: 700px;
+  width: var(--desktop-size);
   margin: 0 auto;
   background: var(--color-bg);
 }
@@ -178,10 +180,18 @@ form button:hover {
 /* Footer */
 
 footer {
-  opacity: 0.6;
+  opacity: 0.5;
   margin: var(--base-margin) auto;
 }
 
 footer:hover {
   opacity: 1;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 800px) {
+  .App {
+    width: var(--mobile-size);
+  }
 }
