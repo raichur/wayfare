@@ -6,6 +6,7 @@ import EditBill from './components/bills/EditBill'
 import AddBill from './components/bills/AddBill'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
+import EditAccount from './components/auth/EditAccount'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Dashboard} />
           <Route path='/edit/:id' component={EditBill} />
+          <Route path='/account' component={EditAccount} />
           <Route path='/add' component={AddBill} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Signup} />

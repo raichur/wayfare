@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 
-class Signup extends Component {
+class editAccount extends Component {
     state = {
-        firstName: '',
-        lastName: '',
         email: '',
         password: ''
     }
@@ -22,7 +20,7 @@ class Signup extends Component {
     render() {
         return (
             <div>
-                <h1>Signup</h1>
+                <h1>Edit account</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className="input">
                         <label htmlFor="firstName">First Name</label>
@@ -41,14 +39,18 @@ class Signup extends Component {
                         <input type="number" id="income" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password">New Password</label>
                         <input type="password" id="password" onChange={this.handleChange}/>
                     </div>
-                    <button type="submit">Create Account</button>
+                    <div className="input">
+                        <label htmlFor="conf-password">Confirm New Password</label>
+                        <input type="password" id="conf-password" onChange={this.handleChange}/>
+                    </div>
+                    <button type="submit">Save Changes</button>
                 </form>
             </div>
         )
     }
 }
 
-export default Signup
+export default editAccount
