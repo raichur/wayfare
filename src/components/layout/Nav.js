@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginLinks from './LoginLinks';
 import LogoutLinks from './LogoutLinks';
+import { connect } from 'react-redux';
 
 const Nav = () => {
     return (
@@ -9,12 +10,21 @@ const Nav = () => {
             <ul>
                 <Link to='/' className="title">Netcome</Link>
                 <div className="right">
-                    <LoginLinks />
                     <LogoutLinks />
+                    <LoginLinks />
                 </div>
             </ul>
         </nav>
     )
 }
 
-export default Nav;
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+
+    }
+}
+
+export default connect(
+    mapStateToProps
+)(Nav);

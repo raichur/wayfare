@@ -37,17 +37,12 @@ a:hover {
 
 /* Nav */
 
-nav {
-  margin: 0;
-}
-
 nav .active {
   font-weight: bold;
 }
 
 nav ul {
-  margin: 0;
-  padding: 0;
+  padding: 5px 0;
   display: flex;
   flex-direction: row;
   margin: var(--base-margin) auto;
@@ -75,10 +70,21 @@ nav ul li {
   margin-left: 20px;
 }
 
+nav .account {
+  background: var(--color-text);
+  color: var(--color-bg);
+  padding: .7rem .7rem;
+  text-decoration: none;
+}
+
+nav .account:hover {
+  background: var(--color-brand);
+}
+
 /* Dashboard */
 
 .dashboard .net {
-  margin-top: var(--base-margin); 
+  margin: calc(1.5*var(--base-margin)) 0; 
 }
 
 .dashboard .net span {
