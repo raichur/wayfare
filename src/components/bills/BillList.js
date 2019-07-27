@@ -1,7 +1,7 @@
 import React from 'react';
 import BillSummary from './BillSummary';
 
-const BillList = () => {
+const BillList = ({bills}) => {
     return (
         <table className="bills">
             <thead>
@@ -13,9 +13,11 @@ const BillList = () => {
                 </tr>
             </thead>
             <tbody>
-                <BillSummary />
-                <BillSummary />
-                <BillSummary />
+                { bills && bills.map(bill => {
+                    return (
+                        <BillSummary bill={bill} key={bill.id} />
+                    )
+                })}
             </tbody>
         </table>
     )
