@@ -8,6 +8,7 @@ import AddBill from './components/bills/AddBill'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import EditAccount from './components/auth/EditAccount'
+import Footer from './components/layout/Footer'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Signup} />
         </Switch>
+        <Footer/>
       </div>
     </BrowserRouter>
   );

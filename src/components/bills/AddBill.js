@@ -30,7 +30,7 @@ class AddBill extends Component {
                     </div>
                     <div className="input">
                         <label htmlFor="description">Description</label>
-                        <textarea id="description" onChange={this.handleChange}/>
+                        <textarea id="description" rows="3" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="cost">Cost</label>

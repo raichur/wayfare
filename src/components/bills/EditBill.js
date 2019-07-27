@@ -30,19 +30,19 @@ class EditBill extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="input">
                         <label htmlFor="name">Name {this.state.id}</label>
-                        <input type="text" id="name"/>
+                        <input type="text" id="name" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="description">Description</label>
-                        <textarea id="description"/>
+                        <textarea rows="3" id="description" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="cost">Cost</label>
-                        <input type="number" id="cost"/>
+                        <input type="number" id="cost" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="color">Color</label>
-                        <input type="color" id="color"/>
+                        <input type="color" id="color" onChange={this.handleChange}/>
                     </div>
                     <button type="submit">Submit Changes</button>
                 </form>
