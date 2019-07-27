@@ -4,6 +4,7 @@ import { createBill } from '../../store/actions/billActions';
 
 class AddBill extends Component {
     state = {
+        id: 1,
         cityid: 1,
         name: '',
         description: '',
