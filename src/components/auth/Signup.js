@@ -40,23 +40,23 @@ class Signup extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="input">
                         <label htmlFor="firstName">First Name</label>
-                        <input type="text" id="firstName" onChange={this.handleChange}/>
+                        <input type="text" id="firstName" required onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="lastName">Last Name</label>
-                        <input type="text" id="lastName" onChange={this.handleChange}/>
+                        <input type="text" id="lastName" required onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" onChange={this.handleChange}/>
+                        <input type="email" id="email" required onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="income">Monthly Income</label>
-                        <input type="number" id="income" onChange={this.handleChange}/>
+                        <input type="number" id="income" required onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" onChange={this.handleChange}/>
+                        <input type="password" id="password" required onChange={this.handleChange}/>
                     </div>
                     <button type="submit">Create Account</button>
                     <div className="error">

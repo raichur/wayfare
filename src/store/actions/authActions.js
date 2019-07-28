@@ -45,3 +45,19 @@ export const signUp = (newUser) => {
         })
     }
 }
+
+export const editAccount = (account) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        const userId = getState().firebase.auth.uid;
+        firestore.collection('users').doc(userId).update({
+            ...account,
+            initials: account.firstName[0] + account.lastName[0]
+        }).then(() => {
+            dispatch({ type: 'EDIT_ACCOUNT_SUCCESS', account });
+        }).catch((err) => {
+            dispatch({ type: 'EDIT_ACCOUNT_ERROR', err});
+        })
+        console.log(account);
+    }
+};

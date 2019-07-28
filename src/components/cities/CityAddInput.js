@@ -27,7 +27,7 @@ class CityAddInput extends Component {
             <ul className="cities">
                 { this.props.cities ?
                 <div className="addCityInput">
-                    <input type="text" id="city" maxLength="50" placeholder="e.g. San Francisco, California" onChange={this.cityInputChange}/>
+                    <input type="text" id="city" maxLength="50" placeholder="e.g. Austin" onChange={this.cityInputChange}/>
                 </div>
                 : null}
             </ul>

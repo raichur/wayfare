@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
     return (
         <footer>
             <p className="left">Made by <a href="https://joshuaraichur.com">Joshua Raichur</a></p>
             <p className="right">
-                <Link to='/faq'>FAQ</Link>
+                <NavLink to='/faq'>FAQ</NavLink>
                 <a href="https://github.com/raichur/wayfare">Source</a>
                 </p>
         </footer>

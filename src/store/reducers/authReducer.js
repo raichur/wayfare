@@ -31,6 +31,15 @@ const authReducer = (state = initState, action) => {
                 ...state,
                 authError: action.err.message
             };
+        case 'EDIT_ACCOUNT_SUCCESS':
+            console.log('edit account success')
+            return {
+                ...state,
+                authError: null
+            };
+        case 'EDIT_ACCOUNT_FAILED':
+            console.log('edit account success')
+            return state;
         default:
             return state;
     }
