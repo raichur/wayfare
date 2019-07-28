@@ -9,7 +9,7 @@ const BillList = ({bills, currentcity}) => {
                     <th>Name</th>
                     <th className="cost">Cost</th>
                     <th>Description</th>
-                    <th>Edit/Delete</th>
+                    <th className="buttons">Edit/Delete</th>
                 </tr>
             </thead>
             <tbody>

@@ -16,7 +16,7 @@ class BillSummary extends Component {
                 <td><span className="colorId" style={{background: this.props.bill.color}}></span>{this.props.bill.name}</td>
                 <td className="cost">${this.props.bill.cost}</td>
                 <td>{this.props.bill.description}</td>
-                <td>
+                <td className="buttons">
                     <Link to={'/edit/' + this.props.bill.id} key={this.props.bill.id}>Edit</Link>
                     <Link to='/' id={this.props.bill.id} onClick={this.deleteBillListener}>Delete</Link>
                 </td>
