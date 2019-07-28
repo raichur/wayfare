@@ -22,20 +22,12 @@ class CityList extends Component {
                 { this.props.cities ?
                 <Select 
                 options={cityList}
+                classNamePrefix="select"
                 isSearchable={true}
                 onChange={this.changeCurrentCity}
                 defaultValue={cityList.filter(option => option.value === this.props.currentcity)}
                 />
                 : null}
-                {/* {this.props.cities ? this.props.cities.map(city => {
-                    return (
-                    <li key={city.id} className={this.props.currentcity === city.id ? "currentcity" : null}>
-                        <Link to="/" onClick={() => this.changeCurrentCity(city.id, city.userid)}>
-                            {city.name}
-                        </Link>
-                    </li>
-                    )
-                }) : null} */}
                 {/* <li>
                     <Link to='/'>+ Add City</Link>
                 </li> */}
