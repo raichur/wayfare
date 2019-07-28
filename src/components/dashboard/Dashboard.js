@@ -19,7 +19,9 @@ class Dashboard extends Component {
         Array.prototype.sum = function (prop) {
             var total = 0
             for ( var i = 0, _len = this.length; i < _len; i++ ) {
-                total += Number(this[i][prop])
+                if (this[i].cityid === profile.currentcity) {
+                    total += Number(this[i][prop])
+                }
             }
             return total
         }
