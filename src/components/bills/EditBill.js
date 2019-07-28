@@ -28,6 +28,7 @@ class EditBill extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.updateBill(this.state, this.props.match.params.id);
+        this.props.history.push('/');
     }
 
     render() {
@@ -81,7 +82,7 @@ const mapStateToProps = (state, ownProps) => {
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
-    firestoreConnect([
-        { collection: 'bills' }
+    firestoreConnect((props) => [
+        { collection: 'bills', where: [['userid', '==', props.auth.uid]], orderBy: [['cost', 'desc']] }
     ])
 )(EditBill);

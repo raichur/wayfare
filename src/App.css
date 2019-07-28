@@ -91,10 +91,17 @@ nav .account:hover {
 }
 
 .dashboard .net span {
-  background: var(--color-goodnet);
   color: var(--color-bg);
   padding: .4rem .75rem;
   margin: -.4rem;
+}
+
+.dashboard .net .positive {
+  background: var(--color-goodnet);
+}
+
+.dashboard .net .negative {
+  background: var(--color-error);
 }
 
 .dashboard .controls {

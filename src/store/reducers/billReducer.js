@@ -1,9 +1,5 @@
 const initState = {
-    bills: [
-        {cityid: '1', name: 'Rent', cost: '400', description: '1 bedroom apt', color: '#000'},
-        {cityid: '1', name: 'Food', cost: '300', description: 'Eating out and cooking at home', color: '#2d974e'},
-        {cityid: '1', name: 'Electricity', cost: '50', description: '', color: '#7F3685'},
-    ]
+    bills: []
 };
 const billReducer = (state = initState, action) => {
     switch (action.type) {

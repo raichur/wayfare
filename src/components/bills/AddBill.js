@@ -27,6 +27,7 @@ class AddBill extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.createBill(this.state);
+        this.props.history.push('/');
     }
 
     render() {
