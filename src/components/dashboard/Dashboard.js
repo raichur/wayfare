@@ -7,6 +7,8 @@ import { compose } from 'redux';
 
 class Dashboard extends Component {
     render() {
+        const { bills, cities, auth, profile } = this.props;
+        let discretionary = 0;
 
         Array.prototype.sum = function (prop) {
             var total = 0
@@ -15,9 +17,7 @@ class Dashboard extends Component {
             }
             return total
         }
-        const { bills, cities, auth, profile } = this.props;
-        let discretionary = 0;
-
+        
         if (bills && profile) {
             discretionary = profile.income - bills.sum('cost')
         }

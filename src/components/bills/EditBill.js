@@ -49,7 +49,7 @@ class EditBill extends Component {
                     </div>
                     <div className="input">
                         <label htmlFor="cost">Cost</label>
-                        <input type="number" step="10" id="cost" placeholder={this.props.bill ? this.props.bill.cost : null} onChange={this.handleChange}/>
+                        <input type="number" id="cost" placeholder={this.props.bill ? this.props.bill.cost : null} onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="color">Color</label>
