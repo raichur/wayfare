@@ -13,9 +13,15 @@ class Signup extends Component {
     }
 
     handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
+        if (e.target.id === "income") {
+            this.setState({
+                income: Number(e.target.value)
+            })
+        } else {
+            this.setState({
+                [e.target.id]: e.target.value
+            })
+        }
     }
 
     handleSubmit = (e) => {

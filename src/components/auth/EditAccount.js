@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom';
 
 class editAccount extends Component {
     state = {
@@ -18,6 +20,10 @@ class editAccount extends Component {
     }
 
     render() {
+        const { auth } = this.props;
+        if (!auth.uid) {
+            return <Redirect to='/login' />
+        }
         return (
             <div>
                 <h2>Edit account</h2>
@@ -49,4 +55,10 @@ class editAccount extends Component {
     }
 }
 
-export default editAccount
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
+export default connect(mapStateToProps)(editAccount)

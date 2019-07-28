@@ -7,13 +7,28 @@ import { compose } from 'redux';
 
 class Dashboard extends Component {
     render() {
-        const { bills, cities, auth } = this.props;
+
+        Array.prototype.sum = function (prop) {
+            var total = 0
+            for ( var i = 0, _len = this.length; i < _len; i++ ) {
+                total += Number(this[i][prop])
+            }
+            return total
+        }
+        const { bills, cities, auth, profile } = this.props;
+        let discretionary = 0;
+
+        if (bills && profile) {
+            discretionary = profile.income - bills.sum('cost')
+        }
+        
         if (!auth.uid) {
             return <Redirect to='/login' />
         }
+
         return (
             <div className="dashboard">
-                <h1 className="net">You have <span>$7000</span> safe to spend</h1>
+                <h1 className="net">You have <span>${discretionary ? discretionary : null}</span> safe to spend</h1>
                 <div className="controls">
                     {cities && cities.map(city => {
                     return (
@@ -33,7 +48,8 @@ const mapStateToProps = (state) => {
     return {
         bills: state.firestore.ordered.bills,
         cities: state.city.cities,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 

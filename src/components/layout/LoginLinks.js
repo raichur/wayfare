@@ -7,7 +7,7 @@ const LoginLinks = (props) => {
     return (
         <div className="links">
             <li><Link to='/login' onClick={props.logout}>Logout</Link></li>
-            <li><NavLink to='/account' className="account">JR</NavLink></li>
+            <li><NavLink to='/account' className="account">{props.profile.initials}</NavLink></li>
         </div>
     )
 }

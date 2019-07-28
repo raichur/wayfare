@@ -13,9 +13,15 @@ class AddBill extends Component {
     }
 
     handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
+        if (e.target.id === "cost") {
+            this.setState({
+                cost: Number(e.target.value)
+            })
+        } else {
+            this.setState({
+                [e.target.id]: e.target.value
+            })
+        }
     }
 
     handleSubmit = (e) => {

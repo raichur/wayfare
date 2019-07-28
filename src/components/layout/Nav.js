@@ -5,12 +5,12 @@ import LogoutLinks from './LogoutLinks';
 import { connect } from 'react-redux';
 
 const Nav = (props) => {
-    const { auth } = props;
-    const links = auth.uid ? <LoginLinks/> : <LogoutLinks/>
+    const { auth, profile } = props;
+    const links = auth.uid ? <LoginLinks profile={profile}/> : <LogoutLinks/>
     return (
         <nav>
             <ul>
-                <Link to='/' className="title">Wanderbill</Link>
+                <Link to='/' className="title">Wanderbills</Link>
                 <div className="right">
                     {links}
                 </div>
@@ -22,7 +22,8 @@ const Nav = (props) => {
 const mapStateToProps = (state) => {
     console.log(state)
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 
