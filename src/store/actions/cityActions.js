@@ -21,6 +21,9 @@ export const createCity = (city) => {
             userid: userId
         }).then(() => {
             dispatch({ type: 'CREATE_CITY', city });
+        }).then((e) => {
+            console.log(e)
+            // changeCurrentCity(city)
         }).catch((err) => {
             dispatch({ type: 'CREATE_CITY_ERROR', err});
         })

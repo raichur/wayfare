@@ -3,11 +3,28 @@ import { Redirect } from 'react-router-dom';
 import BillList from '../bills/BillList';
 import CityList from '../cities/CityList';
 import CityAddInput from '../cities/CityAddInput';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
 class Dashboard extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            showAddCity: false,
+            toggleAddCity() {
+                this.setState({
+                    showAddCity: !this.state.showAddCity
+                })
+            }
+        }
+    }
+
+    
+
+
     render() {
         const { bills, cities, auth, profile } = this.props;
         let discretionary = 0, positive = true;
@@ -38,12 +55,19 @@ class Dashboard extends Component {
         return (
             <div className="dashboard">
                 <h1 className="net">You have <span className={positive ? "positive" : "negative"}>${discretionary ? discretionary : null}</span> safe to spend</h1>
-                <div className="controls">
+                { this.state.showAddCity &&
+                <div className="controls addCityInputContainer">
                     <CityAddInput cities={cities} userid={auth.uid} currentcity={profile.currentcity} />
+                    <Link to='/' className="add cancel" onClick={this.state.toggleAddCity.bind(this)}>Cancel</Link>
                 </div>
-                <div className="controls">
+                }
+                { !this.state.showAddCity &&
+                <div className="controls cityListContainer">
                     <CityList cities={cities} userid={auth.uid} currentcity={profile.currentcity} />
+                    <Link to='/' className="add addcity" onClick={this.state.toggleAddCity.bind(this)}>+ <span>Add</span> City</Link> 
+                    <Link to='/add' className="add">+ <span>Add</span> Bill</Link>
                 </div>
+                }
                 <BillList bills={bills} currentcity={profile.currentcity}/>
             </div>
         )

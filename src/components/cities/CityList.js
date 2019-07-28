@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { changeCurrentCity } from '../../store/actions/cityActions';
 import Select from 'react-select';
 
@@ -18,7 +17,6 @@ class CityList extends Component {
             })
         }
         return (
-            <>
             <ul className="cities">
                 { this.props.cities ?
                 <Select 
@@ -30,9 +28,6 @@ class CityList extends Component {
                 />
                 : null}
             </ul>
-            <Link to='/addcity' className="add addcity">+ <span>Add</span> City</Link> 
-            <Link to='/add' className="add">+ <span>Add</span> Bill</Link>
-            </>
         )
     }
 }

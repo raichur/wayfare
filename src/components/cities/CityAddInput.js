@@ -31,7 +31,6 @@ class CityAddInput extends Component {
                 </div>
                 : null}
             </ul>
-            <Link to='/' className="add cancel">Cancel</Link>
             <Link to='/' className="add submit" onClick={this.createCity}>Submit</Link>
             </>
         )
