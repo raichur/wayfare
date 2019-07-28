@@ -11,6 +11,12 @@ const cityReducer = (state = initState, action) => {
         case 'CREATE_CITY_ERROR':
             console.error('error creating bill: ', action.err);
             return state;
+        case 'UPDATE_CITY':
+            console.log('updated current city', action.bill);
+            return state;
+        case 'UPDATE_CITY_ERRROR':
+            console.error('updated current city error: ', action.err);
+            return state;
         case 'DELETE_CITY':
             console.log('deleted bill', action.bill);
             return state;

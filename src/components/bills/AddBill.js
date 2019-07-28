@@ -5,7 +5,7 @@ import { createBill } from '../../store/actions/billActions';
 
 class AddBill extends Component {
     state = {
-        cityid: 1,
+        cityid: 0,
         name: '',
         description: '',
         cost: 0,
@@ -15,11 +15,13 @@ class AddBill extends Component {
     handleChange = (e) => {
         if (e.target.id === "cost") {
             this.setState({
-                cost: Number(e.target.value)
+                cost: Number(e.target.value),
+                cityid: this.props.profile.currentcity
             })
         } else {
             this.setState({
-                [e.target.id]: e.target.value
+                [e.target.id]: e.target.value,
+                cityid: this.props.profile.currentcity
             })
         }
     }
@@ -64,7 +66,8 @@ class AddBill extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 

@@ -13,13 +13,14 @@ const BillList = ({bills, currentcity}) => {
                 </tr>
             </thead>
             <tbody>
-                { bills && bills.map(bill => {
+                { bills ? bills.map(bill => {
                     if (bill.cityid === currentcity) {
                         return (
                             <BillSummary bill={bill} key={bill.id} />
                         )
                     }
-                })}
+                    return null;
+                }) : null}
             </tbody>
         </table>
     )

@@ -109,9 +109,10 @@ nav .account:hover {
   align-items: center;
 }
 
-.dashboard .controls h2 {
+.dashboard .cities {
   flex-grow: 2;
-  margin: 20px auto;
+  list-style: none;
+  padding: 0;
 }
 
 .bills {

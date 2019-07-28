@@ -4,8 +4,7 @@ export const createBill = (bill) => {
         const userId = getState().firebase.auth.uid;
         firestore.collection('bills').add({
             ...bill,
-            userid: userId,
-            cityid: 1
+            userid: userId
         }).then(() => {
             dispatch({ type: 'CREATE_BILL', bill });
         }).catch((err) => {
