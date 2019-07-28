@@ -10,7 +10,7 @@ const Nav = (props) => {
     return (
         <nav>
             <ul>
-                <Link to='/' className="title">Netcome</Link>
+                <Link to='/' className="title">Wanderbill</Link>
                 <div className="right">
                     {links}
                 </div>
