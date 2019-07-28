@@ -113,6 +113,18 @@ nav .account:hover {
   flex-grow: 2;
   list-style: none;
   padding: 0;
+  margin-right: 40px;
+}
+.dashboard .cities li a {
+  font-weight: normal;
+}
+
+.dashboard .cities li {
+  padding: 5px 0;
+}
+
+.dashboard .cities .currentcity a {
+  font-weight: bold;
 }
 
 .bills {
