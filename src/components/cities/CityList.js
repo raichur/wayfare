@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { changeCurrentCity } from '../../store/actions/cityActions';
 import Select from 'react-select'
@@ -28,9 +27,6 @@ class CityList extends Component {
                 defaultValue={cityList.filter(option => option.value === this.props.currentcity)}
                 />
                 : null}
-                {/* <li>
-                    <Link to='/'>+ Add City</Link>
-                </li> */}
             </ul>
         )
     }

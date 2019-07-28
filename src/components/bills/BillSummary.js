@@ -13,7 +13,7 @@ class BillSummary extends Component {
     render() {
         return (
             <tr>
-                <td>{this.props.bill.name}</td>
+                <td><span className="colorId" style={{background: this.props.bill.color}}></span>{this.props.bill.name}</td>
                 <td className="cost">${this.props.bill.cost}</td>
                 <td>{this.props.bill.description}</td>
                 <td>

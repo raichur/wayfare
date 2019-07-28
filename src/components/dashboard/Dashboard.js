@@ -39,7 +39,8 @@ class Dashboard extends Component {
                 <h1 className="net">You have <span className={positive ? "positive" : "negative"}>${discretionary ? discretionary : null}</span> safe to spend</h1>
                 <div className="controls">
                     <CityList cities={cities} userid={auth.uid} currentcity={profile.currentcity} />
-                    <Link to='/add' className="addBill">+ Add Bill</Link>
+                    <Link to='/addcity' className="add">+ <span>Add</span> City</Link>
+                    <Link to='/add' className="add">+ <span>Add</span> Bill</Link>
                 </div>
                 <BillList bills={bills} currentcity={profile.currentcity}/>
             </div>
