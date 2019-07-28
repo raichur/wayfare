@@ -9,7 +9,7 @@ class EditBill extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: this.props.match.params.id
+            
         }
     }
 
@@ -27,7 +27,7 @@ class EditBill extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.updateBill(this.state);
+        this.props.updateBill(this.state, this.props.match.params.id);
     }
 
     render() {
@@ -64,7 +64,7 @@ class EditBill extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateBill: (bill) => dispatch(updateBill(bill))
+        updateBill: (bill, id) => dispatch(updateBill(bill ,id))
     }
 }
 

@@ -1,9 +1,10 @@
 export const createBill = (bill) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
+        const userId = getState().firebase.auth.uid;
         firestore.collection('bills').add({
             ...bill,
-            userid: 1,
+            userid: userId,
             cityid: 1
         }).then(() => {
             dispatch({ type: 'CREATE_BILL', bill });
@@ -13,10 +14,10 @@ export const createBill = (bill) => {
     }
 };
 
-export const updateBill = (bill) => {
+export const updateBill = (bill, id) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
-        firestore.collection('bills').doc(bill.id).update({
+        firestore.collection('bills').doc(id).update({
             ...bill,
         }).then(() => {
             dispatch({ type: 'UPDATE_BILL', bill });
