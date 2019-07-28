@@ -6,10 +6,10 @@ const initState = {
 const cityReducer = (state = initState, action) => {
     switch (action.type) {
         case 'CREATE_CITY':
-            console.log('created bill', action.city);
+            console.log('created city', action.city);
             return state;
         case 'CREATE_CITY_ERROR':
-            console.error('error creating bill: ', action.err);
+            console.error('error creating city: ', action.err);
             return state;
         case 'UPDATE_CITY':
             console.log('updated current city', action.city);

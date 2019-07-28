@@ -6,6 +6,8 @@
   --color-goodnet: #2D974E;
   --color-inpfocus: rgba(65,195,221,0.1);
   --color-text: black;
+  --color-lightgray: #848484;
+  --color-darkgray: #545454;
   --color-bg: white;
   --color-error: #f23c76;
   --base-margin: 40px;
@@ -107,12 +109,14 @@ nav .account:hover {
 .dashboard .controls {
   display: flex;
   align-items: center;
+  margin: 15px 0;
 }
 
 .dashboard .cities {
   flex-grow: 2;
   list-style: none;
   padding: 0;
+  margin: 0;
   margin-right: 15px;
 }
 
@@ -148,12 +152,45 @@ nav .account:hover {
   text-decoration: none;
 }
 
-.dashboard .add:hover {
+.dashboard .add:not(.cancel):hover {
   background: var(--color-brand);
 }
 
 .dashboard .add:nth-child(2) {
   margin-right: 15px;
+}
+
+.dashboard .cancel {
+  background: var(--color-lightgray);
+}
+
+.dashboard .cancel:hover {
+  background: var(--color-darkgray);
+}
+
+.dashboard .addCityInput {
+  width: 100%;
+}
+
+.dashboard .addCityInput input {
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--color-bg);
+  padding: .25em .5em;
+  color: var(--color-text);
+  min-height: 38px;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  font-size: 1.1rem;
+  font-family: inherit;
+  border: 1px solid var(--color-divsolid);
+}
+
+.dashboard .addCityInput input:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 1px var(--color-brand);
+  border: 1px solid var(--color-brand);
 }
 
 .bills {
@@ -196,11 +233,11 @@ nav .account:hover {
 }
 
 .bills thead, .bills tbody {
-  border-bottom: 2px solid var(--color-divsolid);
+  border-bottom: 1px solid var(--color-divsolid);
 }
 
 .bills thead {
-  border-top: 2px solid var(--color-divsolid);
+  border-top: 1px solid var(--color-divsolid);
 }
 
 .bills tbody a {
@@ -280,7 +317,7 @@ footer {
 
 /* Media Queries */
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 950px) {
   .App {
     width: var(--mobile-size);
   }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import BillList from '../bills/BillList';
 import CityList from '../cities/CityList';
+import CityAddInput from '../cities/CityAddInput';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
@@ -38,9 +39,10 @@ class Dashboard extends Component {
             <div className="dashboard">
                 <h1 className="net">You have <span className={positive ? "positive" : "negative"}>${discretionary ? discretionary : null}</span> safe to spend</h1>
                 <div className="controls">
+                    <CityAddInput cities={cities} userid={auth.uid} currentcity={profile.currentcity} />
+                </div>
+                <div className="controls">
                     <CityList cities={cities} userid={auth.uid} currentcity={profile.currentcity} />
-                    <Link to='/addcity' className="add">+ <span>Add</span> City</Link>
-                    <Link to='/add' className="add">+ <span>Add</span> Bill</Link>
                 </div>
                 <BillList bills={bills} currentcity={profile.currentcity}/>
             </div>

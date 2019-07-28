@@ -42,11 +42,11 @@ class EditBill extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="input">
                         <label htmlFor="name">Name</label>
-                        <input type="text" id="name" placeholder={this.props.bill ? this.props.bill.name : null} onChange={this.handleChange}/>
+                        <input type="text" id="name" maxLength="30" placeholder={this.props.bill ? this.props.bill.name : null} onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="description">Description</label>
-                        <textarea rows="3" id="description" placeholder={this.props.bill ? this.props.bill.description : null} onChange={this.handleChange}/>
+                        <textarea rows="3" id="description" maxLength="140" placeholder={this.props.bill ? this.props.bill.description : null} onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="cost">Cost</label>

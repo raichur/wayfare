@@ -43,15 +43,15 @@ class AddBill extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="input">
                         <label htmlFor="name">Name</label>
-                        <input type="text" id="name" placeholder="Rent" onChange={this.handleChange}/>
+                        <input type="text" id="name" required maxLength="30" placeholder="Rent" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="description">Description</label>
-                        <textarea id="description" placeholder="2 bedroom place in downtown Austin" rows="3" onChange={this.handleChange}/>
+                        <textarea id="description" maxLength="140" placeholder="2 bedroom place in downtown Austin" rows="3" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="cost">Cost</label>
-                        <input type="number" id="cost" placeholder="1400" onChange={this.handleChange}/>
+                        <input type="number" required id="cost" placeholder="1400" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="color">Color</label>

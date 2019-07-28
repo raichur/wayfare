@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { changeCurrentCity } from '../../store/actions/cityActions';
 import Select from 'react-select';
 
 class CityList extends Component {
 
     changeCurrentCity = (e) => {
-        this.props.changeCurrentCity(e.value, e.user);
+        this.props.changeCurrentCity(e.value);
     }
     
     render() {
         let cityList = [];
         if (this.props.cities) {
             this.props.cities.map(city => {
-                return cityList.push({ value: city.id, label: city.name, user: city.userid})
+                return cityList.push({ value: city.id, label: city.name})
             })
         }
         return (
+            <>
             <ul className="cities">
                 { this.props.cities ?
                 <Select 
@@ -28,6 +30,9 @@ class CityList extends Component {
                 />
                 : null}
             </ul>
+            <Link to='/addcity' className="add addcity">+ <span>Add</span> City</Link> 
+            <Link to='/add' className="add">+ <span>Add</span> Bill</Link>
+            </>
         )
     }
 }
