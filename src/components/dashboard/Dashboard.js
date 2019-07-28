@@ -43,7 +43,7 @@ class Dashboard extends Component {
                     <Link to='/'>+ Add City</Link>
                     <Link to='/add'>+ Add Bill</Link>
                 </div>
-                <BillList bills={bills}/>
+                <BillList bills={bills} currentcity={profile.currentcity}/>
             </div>
         )
     }
@@ -52,7 +52,7 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
     return {
         bills: state.firestore.ordered.bills,
-        cities: state.city.cities,
+        cities: state.firestore.ordered.cities,
         auth: state.firebase.auth,
         profile: state.firebase.profile
     }
@@ -61,6 +61,7 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect((props) => [
-        { collection: 'bills', where: [['userid', '==', props.auth.uid]], orderBy: [['cost', 'desc']]}
+        { collection: 'bills', where: [['userid', '==', props.auth.uid]], orderBy: [['cost', 'desc']]},
+        { collection: 'cities', where: [['userid', '==', props.auth.uid]]}
     ])
 )(Dashboard);
