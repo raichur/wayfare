@@ -1,7 +1,7 @@
 /* Basic */
 :root {
   --color-brand: #2684FF;
-  --color-div: hsl(0,0%,100%);
+  --color-div: #f2f2f2;
   --color-divsolid: hsl(0,0%,80%);
   --color-goodnet: #2D974E;
   --color-inpfocus: rgba(65,195,221,0.1);
@@ -9,7 +9,7 @@
   --color-bg: white;
   --color-error: #f23c76;
   --base-margin: 40px;
-  --desktop-size: 700px;
+  --desktop-size: 900px;
   --mobile-size: calc(100% - 50px);
 }
 
@@ -120,6 +120,11 @@ nav .account:hover {
   border-radius: 0;
 }
 
+.dashboard .select__value-container {
+  font-weight: bold;
+  font-size: 1.15rem;
+}
+
 .dashboard .select__menu-list {
   padding: 0;
 }
@@ -172,8 +177,15 @@ nav .account:hover {
   text-align: left;
 }
 
+.bills td:first-child, .bills th:first-child {
+  min-width: 100%;
+  white-space: nowrap;
+}
+
 .bills .cost {
   text-align: right;
+  width:0.1%;
+  white-space: nowrap;
 }
 
 .bills td, .bills th {
@@ -192,12 +204,12 @@ nav .account:hover {
 }
 
 .bills tbody a {
-  margin-left: 10px;
+  margin: 0 5px;
 }
 
 .bills .buttons {
   width: 150px;
-  text-align: right;
+  text-align: center;
 }
 
 /* Forms */
@@ -209,7 +221,7 @@ form .input input, form .input textarea {
   margin-top: 5px;
   box-sizing: border-box;
   width: 100%;
-  background: var(--color-div);
+  background: var(--color-bg);
   padding: .25em .5em;
   color: var(--color-text);
   min-height: 38px;
