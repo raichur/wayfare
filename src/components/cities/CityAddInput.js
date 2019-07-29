@@ -51,7 +51,8 @@ class CityAddInput extends Component {
                 autoFocus="true"
                 placeholder="e.g. Austin, Texas"
                 valueKey="id"
-                isClearable
+                allowCreateWhileLoading="true"
+                createOptionPosition="first"
                 classNamePrefix="select"
                 loadOptions={this.getCities.bind(this)}
                 onChange={this.cityInputChange}

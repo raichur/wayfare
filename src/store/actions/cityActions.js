@@ -1,4 +1,4 @@
-export const changeCurrentCity = (city) => {
+const changeCurrentCity = (city) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
         const userId = getState().firebase.auth.uid;
@@ -12,7 +12,7 @@ export const changeCurrentCity = (city) => {
     }
 };
 
-export const createCity = (city) => {
+const createCity = (city) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
         const userId = getState().firebase.auth.uid;
@@ -29,3 +29,20 @@ export const createCity = (city) => {
         })
     }
 };
+
+const deleteCity = (city) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        console.log('okay')
+        changeCurrentCity(getState().firestore.data.cities[Object.keys(getState().firestore.data.cities)[0]].userid);
+        debugger;
+        // firestore.collection('cities').doc(city.id).delete().then(() => {
+        //     dispatch({ type: 'DELETE_CITY', city });
+            
+        // }).catch((err) => {
+        //     dispatch({ type: 'DELETE_CITY_ERROR', err});
+        // })
+    }
+};
+
+export {changeCurrentCity, createCity, deleteCity}

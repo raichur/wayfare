@@ -18,10 +18,10 @@ const cityReducer = (state = initState, action) => {
             console.error('updated current city error: ', action.err);
             return state;
         case 'DELETE_CITY':
-            console.log('deleted bill', action.city);
+            console.log('deleted city', action.city);
             return state;
         case 'DELETE_CITY_ERROR':
-            console.error('error deleting bill: ', action.err);
+            console.error('error deleting city: ', action.err);
             return state;
         default:
             return state;

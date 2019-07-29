@@ -11,7 +11,7 @@
   --color-bg: white;
   --color-error: #f23c76;
   --base-margin: 40px;
-  --desktop-size: 800px;
+  --desktop-size: 700px;
   --mobile-size: calc(100% - 50px);
 }
 
@@ -25,7 +25,7 @@ html, body {
   padding: 0;
 }
 
-p, a, h1, h2, h3, h4, b {
+p, a, b {
   line-height: 24.5px;
   letter-spacing: -0.6px;
 }
@@ -92,15 +92,33 @@ nav .account:hover {
 /* Dashboard */
 
 .dashboard .net {
-  margin: calc(1.5*var(--base-margin)) 0;
-  text-align: center;
-  font-size: 1.5rem;
+  margin: var(--base-margin) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard .net h1 {
+  font-size: 2rem;
+  display: block;
+  flex-grow: 2;
+}
+
+.dashboard .net br {
+  display: block;
+  margin: 20px 0;
+  content: " ";
+}
+
+.dashboard .chartContainer {
+  max-width: 30vw;
 }
 
 .dashboard .net span {
   color: var(--color-bg);
   padding: .4rem .75rem;
   margin: -.4rem;
+  font-size: 2.8rem;
 }
 
 .dashboard .net .positive {
@@ -131,7 +149,7 @@ nav .account:hover {
 
 .dashboard .select__value-container {
   font-weight: bold;
-  font-size: 1.15rem;
+  font-size: 1.3rem;
 }
 
 .dashboard .select__menu-list {
@@ -196,6 +214,20 @@ nav .account:hover {
   outline: none !important;
   box-shadow: 0 0 0 1px var(--color-brand);
   border: 1px solid var(--color-brand);
+}
+
+.dashboard .deleteCity {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 0.92rem;
+}
+
+.dashboard .deleteCity a {
+  color: var(--color-darkgray);
+}
+
+.dashboard .deleteCity a:hover {
+  color: var(--color-brand);
 }
 
 .bills {
