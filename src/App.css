@@ -98,10 +98,17 @@ nav .account:hover {
   justify-content: center;
 }
 
-.dashboard .net h1 {
-  font-size: 2rem;
+.dashboard .net .titleContainer {
   display: block;
   flex-grow: 2;
+}
+
+.dashboard .net .titleContainer h1 {
+  font-size: 2rem;
+}
+
+.dashboard .net .titleContainer p {
+  color: var(--color-darkgray);
 }
 
 .dashboard .net br {
@@ -111,7 +118,7 @@ nav .account:hover {
 }
 
 .dashboard .chartContainer {
-  max-width: 30vw;
+  max-width: 30%;
 }
 
 .dashboard .net span {

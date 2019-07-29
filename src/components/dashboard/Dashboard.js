@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { deleteCity } from '../../store/actions/cityActions';
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut, defaults } from 'react-chartjs-2';
 
 class Dashboard extends Component {
 
@@ -89,11 +89,14 @@ class Dashboard extends Component {
             }
         };
         
+        defaults.global.defaultFontFamily = 'SF Mono';
 
         return (
             <div className="dashboard">
                 <div className="net">
-                <h1>You have <br/>{discretionary ? <span className={positive ? "positive" : "negative"}>${discretionary}</span> : null}<br/> safe to spend</h1>
+                <div className="titleContainer">
+                    <h1>You have <br/>{discretionary ? <span className={positive ? "positive" : "negative"}>${discretionary}</span> : null}<br/> safe to spend</h1>
+                </div>
                 <div className="chartContainer">
                     <Doughnut 
                     data={chartData}
