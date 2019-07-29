@@ -7,7 +7,7 @@
   --color-inpfocus: rgba(65,195,221,0.1);
   --color-text: black;
   --color-lightgray: #848484;
-  --color-darkgray: #545454;
+  --color-darkgray: #5b5b5b;
   --color-bg: white;
   --color-error: #f23c76;
   --base-margin: 40px;
@@ -17,6 +17,7 @@
 
 * {
   box-sizing: border-box;
+  font-family: 'SF Mono';
 }
 
 html, body {
@@ -30,7 +31,6 @@ p, a, h1, h2, h3, h4, b {
 }
 
 .App {
-  font-family: 'SF Mono';
   width: var(--desktop-size);
   margin: 0 auto;
   background: var(--color-bg);
@@ -228,6 +228,10 @@ nav .account:hover {
   text-align: right;
   width:0.1%;
   white-space: nowrap;
+}
+
+.bills .description {
+  color: var(--color-darkgray);
 }
 
 .bills .totals {

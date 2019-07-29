@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createCity } from '../../store/actions/cityActions';
+import Creatable from 'react-select/async-creatable';
+import axios from 'axios'
 
 class CityAddInput extends Component {
 
@@ -13,13 +15,21 @@ class CityAddInput extends Component {
     }
 
     cityInputChange = (e) => {
-        this.setState({currentInput: e.target.value});
+        this.setState({currentInput: e.label});
+        console.log(this.state)
     }    
 
     checkForEnter = (e) => {
         if (e.key === 'Enter') {
             this.createCity(e);
           }
+    }
+
+    getCities = (searchTerm) => {
+        return axios.get(`https://api.teleport.org/api/cities/?search=${searchTerm}`)
+        .then(res => {
+            return (res.data._embedded["city:search-results"].map(city => {return {label: city.matching_full_name, value: city.matching_full_name} }))
+        });
     }
 
     createCity = (e) => {
@@ -30,11 +40,23 @@ class CityAddInput extends Component {
     render() {
         return (
             <>
-            <ul className="cities">
-                { this.props.cities ?
-                <div className="addCityInput">
+             <ul className="cities">
+                 { this.props.cities ?
+                <>
+                {/* <div className="addCityInput">
                     <input type="text" id="city" maxLength="50" placeholder="e.g. Austin" onKeyDown={this.checkForEnter} onChange={this.cityInputChange}/>
-                </div>
+                </div> */}
+                <Creatable
+                name="city"
+                autoFocus="true"
+                placeholder="e.g. Austin, Texas"
+                valueKey="id"
+                isClearable
+                classNamePrefix="select"
+                loadOptions={this.getCities.bind(this)}
+                onChange={this.cityInputChange}
+                />
+                </>
                 : null}
             </ul>
             <Link to='/' className="add submit" onClick={this.createCity}>Submit</Link>

@@ -56,10 +56,10 @@ class EditAccount extends Component {
                         <label htmlFor="email">Email</label>
                         <input disabled type="email" id="email" placeholder={auth ? auth.email : null} onChange={this.handleChange}/>
                     </div>
-                    {/* <div className="input">
-                        <label htmlFor="password">New Password</label>
-                        <input disabled type="password" id="password" onChange={this.handleChange}/>
-                    </div> */}
+                    <div className="input disabled">
+                        <label htmlFor="password">Password</label>
+                        <input disabled type="password" id="password" placeholder="********" onChange={this.handleChange}/>
+                    </div>
                     <button type="submit">Save Changes</button>
                 </form>
             </div>
