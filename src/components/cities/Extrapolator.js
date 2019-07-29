@@ -12,7 +12,6 @@ class Extrapolator extends Component {
     }
 
     changeCurrentCity = (e) => {
-        console.log(e.value);
         this.setState({ numberOfMonths: e.value})
     }
 

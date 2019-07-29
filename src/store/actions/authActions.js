@@ -58,6 +58,5 @@ export const editAccount = (account) => {
         }).catch((err) => {
             dispatch({ type: 'EDIT_ACCOUNT_ERROR', err});
         })
-        console.log(account);
     }
 };

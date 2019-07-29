@@ -16,7 +16,6 @@ class CityAddInput extends Component {
 
     cityInputChange = (e) => {
         this.setState({currentInput: e.label});
-        console.log(this.state)
     }    
 
     checkForEnter = (e) => {

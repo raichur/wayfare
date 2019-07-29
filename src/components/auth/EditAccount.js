@@ -22,7 +22,6 @@ class EditAccount extends Component {
                 [e.target.id]: e.target.value
             })
         }
-        console.log(this.state)
     }
 
     handleSubmit = (e) => {

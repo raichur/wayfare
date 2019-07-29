@@ -34,7 +34,6 @@ class Dashboard extends Component {
 
     extrapolate = (e) => {
         this.setState({discMultiplier: e.value, numberOfMonths: e.label});
-        console.log(this.state.discMultiplier, this.state.discretionary);
     }
 
     getDiscretionary = (bills, profile) => {
@@ -142,7 +141,7 @@ class Dashboard extends Component {
                         break;
                     }
                 }
-                this.props.currentcity = newCityId;
+                
                 this.props.changeCurrentCity(newCityId);
                 this.props.deleteCity(e.target);
             }
