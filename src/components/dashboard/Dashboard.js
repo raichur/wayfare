@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import Select from 'react-select';
-import { deleteCity } from '../../store/actions/cityActions';
+import { changeCurrentCity, deleteCity } from '../../store/actions/cityActions';
 import { Doughnut, defaults } from 'react-chartjs-2';
 
 class Dashboard extends Component {
@@ -29,16 +29,6 @@ class Dashboard extends Component {
                     showAddCity: !this.state.showAddCity
                 })
             }
-        }
-    }
-
-    changeCurrentCity = (e) => {
-        this.setState({ numberOfMonths: e.value});
-    }
-
-    deleteCityListener = (e) => {
-        if (window.confirm('Are you sure you want to delete this city?')) {
-            this.props.deleteCity(e.target);
         }
     }
 
@@ -143,6 +133,20 @@ class Dashboard extends Component {
         defaults.global.defaultFontFamily = 'San Francisco';
 
         // Extrapolation
+        const deleteCityListener = (e) => {
+            if (window.confirm('Are you sure you want to delete this city?')) {
+                let newCityId = '';
+                for (let theCity in cities) {
+                    if (cities[theCity].id !== profile.currentcity && cities[theCity].userid === auth.uid) {
+                        newCityId = cities[theCity].id
+                        break;
+                    }
+                }
+                this.props.currentcity = newCityId;
+                this.props.changeCurrentCity(newCityId);
+                this.props.deleteCity(e.target);
+            }
+        }
 
 
         return (
@@ -192,7 +196,7 @@ class Dashboard extends Component {
                 <BillList bills={bills} totalCost={this.state.totalCost} currentcity={profile.currentcity}/>
                 <div className="deleteCity">
                     {this.state.currentCityName ? <CityData city={this.state.currentCityName} /> : null}
-                    <Link to='/' id={profile.currentcity} onClick={this.deleteCityListener}>Delete {cities ? this.state.currentCityName : null}</Link>
+                    <Link to='/' id={profile.currentcity} onClick={deleteCityListener}>Delete {cities ? this.state.currentCityName : null}</Link>
                 </div>
             </div>
         )
@@ -210,7 +214,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteCity: (city) => dispatch(deleteCity(city))
+        deleteCity: (city) => dispatch(deleteCity(city)),
+        changeCurrentCity: (city) => dispatch(changeCurrentCity(city))
     }
 }
 

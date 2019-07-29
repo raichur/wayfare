@@ -33,11 +33,8 @@ const createCity = (city) => {
 const deleteCity = (city) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
-        console.log('okay')
-        firestore.collection('cities').doc(city.id).delete().then(() => {
-            dispatch({ type: 'DELETE_CITY', city });
-        }).then(() => {
-            changeCurrentCity(getState().firestore.data.cities[Object.keys(getState().firestore.data.cities)[0]].userid);
+        firestore.collection('cities').doc(city.id).delete().then(() =>  {
+            dispatch({ type: 'DELETE_CITY', city });   
         }).catch((err) => {
             dispatch({ type: 'DELETE_CITY_ERROR', err});
         })
