@@ -1,7 +1,7 @@
 import React from 'react';
 import BillSummary from './BillSummary';
 
-const BillList = ({bills, currentcity}) => {
+const BillList = ({bills, currentcity, totalCost}) => {
     return (
         <table className="bills">
             <thead>
@@ -21,6 +21,12 @@ const BillList = ({bills, currentcity}) => {
                     }
                     return null;
                 }) : null}
+                <tr className="totals">
+                    <td><b>Total</b></td>
+                    <td className="cost">${totalCost}</td>
+                    <td></td>
+                    <td className="buttons"></td>
+                </tr>
             </tbody>
         </table>
     )

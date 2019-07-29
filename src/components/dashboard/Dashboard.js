@@ -27,7 +27,7 @@ class Dashboard extends Component {
 
     render() {
         const { bills, cities, auth, profile } = this.props;
-        let discretionary = 0, positive = true;
+        let discretionary = 0, positive = true, totalCost = 0;
         
         if (!auth.uid) {
             return <Redirect to='/login' />
@@ -45,7 +45,8 @@ class Dashboard extends Component {
         }
         
         if (bills && profile) {
-            discretionary = profile.income - bills.sum('cost')
+            totalCost = bills.sum('cost')
+            discretionary = profile.income - totalCost
             if (discretionary <= 100) {
                 positive = false;
             }
@@ -54,7 +55,7 @@ class Dashboard extends Component {
 
         return (
             <div className="dashboard">
-                <h1 className="net">You have <span className={positive ? "positive" : "negative"}>${discretionary ? discretionary : null}</span> safe to spend</h1>
+                <h1 className="net">You have {discretionary ? <span className={positive ? "positive" : "negative"}>${discretionary}</span> : null} safe to spend</h1>
                 { this.state.showAddCity &&
                 <div className="controls addCityInputContainer">
                     <CityAddInput cities={cities} userid={auth.uid} currentcity={profile.currentcity} />
@@ -68,7 +69,9 @@ class Dashboard extends Component {
                     <Link to='/add' className="add">+ <span>Add</span> Bill</Link>
                 </div>
                 }
-                <BillList bills={bills} currentcity={profile.currentcity}/>
+                <BillList bills={bills} totalCost={totalCost} currentcity={profile.currentcity}/>
+                <h4>Expatistan data</h4>
+                <Link to='/' className="deleteCity">Delete {cities ? cities.find(function(city) {return city.id === profile.currentcity}).name : null}</Link>
             </div>
         )
     }

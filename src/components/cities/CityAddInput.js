@@ -16,6 +16,12 @@ class CityAddInput extends Component {
         this.setState({currentInput: e.target.value});
     }    
 
+    checkForEnter = (e) => {
+        if (e.key === 'Enter') {
+            this.createCity(e);
+          }
+    }
+
     createCity = (e) => {
         e.preventDefault()
         this.props.createCity(this.state.currentInput);
@@ -27,7 +33,7 @@ class CityAddInput extends Component {
             <ul className="cities">
                 { this.props.cities ?
                 <div className="addCityInput">
-                    <input type="text" id="city" maxLength="50" placeholder="e.g. Austin" onChange={this.cityInputChange}/>
+                    <input type="text" id="city" maxLength="50" placeholder="e.g. Austin" onKeyDown={this.checkForEnter} onChange={this.cityInputChange}/>
                 </div>
                 : null}
             </ul>

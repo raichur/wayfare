@@ -8,6 +8,7 @@ class CityList extends Component {
     changeCurrentCity = (e) => {
         this.props.changeCurrentCity(e.value);
     }
+
     
     render() {
         let cityList = [];

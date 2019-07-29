@@ -230,6 +230,10 @@ nav .account:hover {
   white-space: nowrap;
 }
 
+.bills .totals {
+  border-top: 1px solid var(--color-divsolid);
+}
+
 .bills td, .bills th {
   vertical-align: top;
   border-left: 1px solid var(--color-div);
@@ -310,6 +314,10 @@ form button:hover {
 
 form .error {
   color: var(--color-error);
+}
+
+.disabled {
+  opacity: 0.4;
 }
 
 /* Footer */

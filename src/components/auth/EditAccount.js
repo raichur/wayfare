@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
 import { editAccount } from '../../store/actions/authActions';
 
 class EditAccount extends Component {
@@ -24,6 +22,7 @@ class EditAccount extends Component {
                 [e.target.id]: e.target.value
             })
         }
+        console.log(this.state)
     }
 
     handleSubmit = (e) => {
@@ -33,7 +32,7 @@ class EditAccount extends Component {
     }
 
     render() {
-        const { auth } = this.props;
+        const { auth, profile } = this.props;
         if (!auth.uid) {
             return <Redirect to='/login' />
         }
@@ -43,24 +42,24 @@ class EditAccount extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="input">
                         <label htmlFor="firstName">First Name</label>
-                        <input type="text" id="firstName" placeholder={this.props.profile ? this.props.profile.firstName : null} onChange={this.handleChange}/>
+                        <input type="text" id="firstName" placeholder={profile ? profile.firstName : null} onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="lastName">Last Name</label>
-                        <input type="text" id="lastName" placeholder={this.props.profile ? this.props.profile.lastName : null} onChange={this.handleChange}/>
+                        <input type="text" id="lastName" placeholder={profile ? profile.lastName : null} onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="income">Monthly Income</label>
-                        <input type="number" id="income" placeholder={this.props.profile ? this.props.profile.income : null} onChange={this.handleChange}/>
+                        <input type="number" id="income" placeholder={profile ? profile.income : null} onChange={this.handleChange}/>
                     </div>
-                    <div className="input">
+                    <div className="input disabled">
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" placeholder={this.props.auth ? this.props.auth.email : null} onChange={this.handleChange}/>
+                        <input disabled type="email" id="email" placeholder={auth ? auth.email : null} onChange={this.handleChange}/>
                     </div>
-                    <div className="input">
+                    {/* <div className="input">
                         <label htmlFor="password">New Password</label>
-                        <input type="password" id="password" onChange={this.handleChange}/>
-                    </div>
+                        <input disabled type="password" id="password" onChange={this.handleChange}/>
+                    </div> */}
                     <button type="submit">Save Changes</button>
                 </form>
             </div>
@@ -74,21 +73,11 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    const id = ownProps.match.params.id;
-    const bills = state.firestore.data.bills;
-    const bill = bills ? bills[id] : null;
-    const auth = state.firebase.auth;
-    const profile = state.firebase.profile;
-    state = ownProps.bill;
+const mapStateToProps = (state) => {
     return {
-        bill, auth, profile
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 
-export default compose(
-    connect(mapStateToProps, mapDispatchToProps),
-    firestoreConnect((props) => [
-        { collection: 'bills', where: [['userid', '==', props.auth.uid]], orderBy: [['cost', 'desc']] }
-    ])
-)(EditAccount);
+export default connect(mapStateToProps, mapDispatchToProps)(EditAccount);
