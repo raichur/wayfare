@@ -4,13 +4,13 @@ class Faq extends Component {
     render() {
         return (
             <div className="faq">
-                <h2>FAQ</h2>
+                <h1>FAQ</h1>
                 <h3>What is Wayfare?</h3>
                 <p>Wayfare is a simple app made to help you easily calculate your discretionary income. It's tailored for nomads and remote workers who move often, hence the name.</p>
                 <p>
                     You tell Wayfare your monthly income and fixed monthly expenses, and Wayfare will show you how much you have left to safely use. 
                     You can add multiple cities with different monthly expenses, and Wayfare will do the math for you. 
-                    Want to extrapolate the data to see how much you can use for a different time interval (3mo, 1yr)? Wayfare can do that too.
+                    Want to extrapolate the data to see how much you can use for a different time interval (e.g. 3 months or 1 year)? Wayfare can do that too.
                 </p>
                 <p><b>That's about it.</b> There's not much to it. It's just a tool I personally needed but didn't find. So I made it myself.</p>
                 <h3>Can I modify my monthly income and other details?</h3>

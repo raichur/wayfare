@@ -1,7 +1,5 @@
 const initState = {
-    cities: [
-        
-    ]
+    cities: []
 };
 const cityReducer = (state = initState, action) => {
     switch (action.type) {

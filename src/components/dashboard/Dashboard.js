@@ -3,10 +3,12 @@ import { Redirect } from 'react-router-dom';
 import BillList from '../bills/BillList';
 import CityList from '../cities/CityList';
 import CityAddInput from '../cities/CityAddInput';
+import CityData from '../cities/getCityCostData';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import Select from 'react-select';
 import { deleteCity } from '../../store/actions/cityActions';
 import { Doughnut, defaults } from 'react-chartjs-2';
 
@@ -16,6 +18,12 @@ class Dashboard extends Component {
         super(props);
         this.state = {
             showAddCity: false,
+            numberOfMonths: '1 month',
+            currentCityName: '',
+            discretionary: 0,
+            discMultiplier: 1,
+            positive: true, 
+            totalCost: 0,
             toggleAddCity() {
                 this.setState({
                     showAddCity: !this.state.showAddCity
@@ -24,21 +32,22 @@ class Dashboard extends Component {
         }
     }
 
+    changeCurrentCity = (e) => {
+        this.setState({ numberOfMonths: e.value});
+    }
+
     deleteCityListener = (e) => {
-        if (window.confirm('Are you sure you wish to delete this city?')) {
+        if (window.confirm('Are you sure you want to delete this city?')) {
             this.props.deleteCity(e.target);
         }
     }
 
-    render() {
-        
-        const { bills, cities, auth, profile } = this.props;
-        let discretionary = 0, positive = true, totalCost = 0;
-        
-        if (!auth.uid) {
-            return <Redirect to='/login' />
-        }
+    extrapolate = (e) => {
+        this.setState({discMultiplier: e.value, numberOfMonths: e.label});
+        console.log(this.state.discMultiplier, this.state.discretionary);
+    }
 
+    getDiscretionary = (bills, profile) => {
         /*eslint no-extend-native: ["error", { "exceptions": ["Array"] }]*/
         Array.prototype.sum = function (prop) {
             var total = 0
@@ -50,14 +59,33 @@ class Dashboard extends Component {
             return total
         }
         
-        if (bills && profile) {
-            totalCost = bills.sum('cost')
-            discretionary = profile.income - totalCost
-            if (discretionary <= 100) {
-                positive = false;
-            }
+        this.state.totalCost = bills.sum('cost')
+        this.state.discretionary = (profile.income - this.state.totalCost) * this.state.discMultiplier;
+        if (this.state.discretionary <= 100) {
+            this.state.positive = false;
+        } else {
+            this.state.positive = true;
+        }
+    }
+
+    render() {
+        
+        // Bills and calculator
+        const { cities, auth, profile, bills } = this.props;
+        
+        if (!auth.uid) {
+            return <Redirect to='/login' />
+        }
+        
+        if (cities) {
+            this.state.currentCityName = cities.find(function(city) {return city.id === profile.currentcity}).name;
+        }
+        
+        if (bills && profile) { 
+            this.getDiscretionary(bills, profile)
         }
 
+        // Chart Stuff
         let chartLabels = [];
         let chartTotals = [];
         let chartColors = [];
@@ -80,22 +108,53 @@ class Dashboard extends Component {
             }]      
         };
         let chartOptions = {
+            responsive: true,
+            maintainAspectRatio: true,
             aspectRatio: 1,
+            tooltips: {
+                cornerRadius: 0,
+                xPadding: 10,
+                yPadding: 10,
+                caretPadding: 10,
+                callbacks: {
+                    label: (tooltipItem, data) => {
+                        return ` ${data.labels[tooltipItem.index]}: $${data.datasets[0].data[tooltipItem.index]}`
+                    }
+                }
+            },
             legend: {
                 display: false
             },
             animation: {
-                duration: 0
+                duration: 300
             }
         };
+        let extrapolateList = [
+            {value: '1', label: '1 month'},
+            {value: '2', label: '2 months'},
+            {value: '3', label: '3 months'},
+            {value: '4', label: '4 months'},
+            {value: '5', label: '5 months'},
+            {value: '6', label: '6 months'},
+            {value: '12', label: '1 year'},
+            {value: '24', label: '2 years'}
+        ];
         
-        defaults.global.defaultFontFamily = 'SF Mono';
+        defaults.global.defaultFontFamily = 'San Francisco';
+
+        // Extrapolation
+
 
         return (
             <div className="dashboard">
                 <div className="net">
                 <div className="titleContainer">
-                    <h1>You have <br/>{discretionary ? <span className={positive ? "positive" : "negative"}>${discretionary}</span> : null}<br/> safe to spend</h1>
+                    <h1>
+                        You have <br/>
+                        {this.state.discretionary ? <span className={this.state.positive ? "positive" : "negative"}>${this.state.discretionary}</span> : null} <br/> 
+                        safe to spend
+                    </h1>
+                    <h4>for {this.state.numberOfMonths} in {this.state.currentCityName}</h4>
                 </div>
                 <div className="chartContainer">
                     <Doughnut 
@@ -115,13 +174,25 @@ class Dashboard extends Component {
                 { !this.state.showAddCity &&
                 <div className="controls cityListContainer">
                     <CityList cities={cities} userid={auth.uid} currentcity={profile.currentcity} />
+                    <ul className="cities extrapolator">
+                        { this.props.cities ?
+                        <Select 
+                        options={extrapolateList}
+                        classNamePrefix="select"
+                        isSearchable={false}
+                        onChange={this.extrapolate.bind(this)}
+                        defaultValue={extrapolateList[0]}
+                        />
+                        : null}
+                    </ul>
                     <Link to='/' className="add addcity" onClick={this.state.toggleAddCity.bind(this)}>+ <span>Add</span> City</Link> 
                     <Link to='/add' className="add">+ <span>Add</span> Bill</Link>
                 </div>
                 }
-                <BillList bills={bills} totalCost={totalCost} currentcity={profile.currentcity}/>
+                <BillList bills={bills} totalCost={this.state.totalCost} currentcity={profile.currentcity}/>
                 <div className="deleteCity">
-                    <Link to='/' id={profile.currentcity} onClick={this.deleteCityListener}>Delete {cities ? cities.find(function(city) {return city.id === profile.currentcity}).name : null}</Link>
+                    {this.state.currentCityName ? <CityData city={this.state.currentCityName} /> : null}
+                    <Link to='/' id={profile.currentcity} onClick={this.deleteCityListener}>Delete {cities ? this.state.currentCityName : null}</Link>
                 </div>
             </div>
         )

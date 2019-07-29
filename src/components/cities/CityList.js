@@ -8,7 +8,6 @@ class CityList extends Component {
     changeCurrentCity = (e) => {
         this.props.changeCurrentCity(e.value);
     }
-
     
     render() {
         let cityList = [];
@@ -18,7 +17,7 @@ class CityList extends Component {
             })
         }
         return (
-            <ul className="cities">
+            <ul className="cities selectCity">
                 { this.props.cities ?
                 <Select 
                 options={cityList}

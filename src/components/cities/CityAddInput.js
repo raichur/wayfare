@@ -40,7 +40,7 @@ class CityAddInput extends Component {
     render() {
         return (
             <>
-             <ul className="cities">
+             <ul className="cities addCity">
                  { this.props.cities ?
                 <>
                 {/* <div className="addCityInput">

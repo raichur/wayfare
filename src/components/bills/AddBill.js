@@ -50,7 +50,7 @@ class AddBill extends Component {
                         <textarea id="description" maxLength="140" placeholder="2 bedroom place in downtown Austin" rows="3" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
-                        <label htmlFor="cost">Cost</label>
+                        <label htmlFor="cost">Cost (per month)</label>
                         <input type="number" required id="cost" placeholder="1400" onChange={this.handleChange}/>
                     </div>
                     <div className="input">

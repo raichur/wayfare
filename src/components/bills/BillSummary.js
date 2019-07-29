@@ -7,7 +7,7 @@ import { deleteBill } from '../../store/actions/billActions';
 class BillSummary extends Component {
 
     deleteBillListener = (e) => {
-        if (window.confirm('Are you sure you wish to delete this bill?')) {
+        if (window.confirm('Are you sure you want to delete this bill?')) {
             this.props.deleteBill(e.target);
         }
     }

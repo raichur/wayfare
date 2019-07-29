@@ -10,14 +10,15 @@
   --color-darkgray: #5b5b5b;
   --color-bg: white;
   --color-error: #f23c76;
-  --base-margin: 40px;
+  --base-margin: 30px;
   --desktop-size: 700px;
-  --mobile-size: calc(100% - 50px);
+  --mid-size: calc(100% - 120px);
+  --mobile-size: calc(100% - 60px);
 }
 
 * {
   box-sizing: border-box;
-  font-family: 'SF Mono';
+  font-family: 'San Francisco';
 }
 
 html, body {
@@ -25,9 +26,13 @@ html, body {
   padding: 0;
 }
 
+a, button {
+  transition: all ease 0.2s;
+}
+
 p, a, b {
   line-height: 24.5px;
-  letter-spacing: -0.6px;
+  /* letter-spacing: -0.6px; */
 }
 
 .App {
@@ -45,7 +50,7 @@ a:hover {
 
 /* Nav */
 
-nav .active {
+nav .active:not(.account) {
   font-weight: bold;
 }
 
@@ -59,8 +64,12 @@ nav ul {
 nav .title {
   text-decoration: none;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 700;
   flex-grow: 2;
+}
+
+nav .title span {
+  font-weight: 500;
 }
 
 nav .right {
@@ -87,12 +96,17 @@ nav .account {
 
 nav .account:hover {
   background: var(--color-brand);
+  font-weight: 500;
+}
+
+nav .account.active {
+  background: var(--color-brand);
 }
 
 /* Dashboard */
 
 .dashboard .net {
-  margin: var(--base-margin) 0;
+  margin: 3rem 0 3rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,6 +119,7 @@ nav .account:hover {
 
 .dashboard .net .titleContainer h1 {
   font-size: 2rem;
+  margin: 20px 0;
 }
 
 .dashboard .net .titleContainer p {
@@ -113,7 +128,7 @@ nav .account:hover {
 
 .dashboard .net br {
   display: block;
-  margin: 20px 0;
+  margin: 13px 0;
   content: " ";
 }
 
@@ -136,6 +151,12 @@ nav .account:hover {
   background: var(--color-error);
 }
 
+.dashboard .net h4 {
+  font-weight: 500;
+  color: var(--color-darkgray);
+  margin: 0;
+}
+
 .dashboard .controls {
   display: flex;
   align-items: center;
@@ -143,11 +164,18 @@ nav .account:hover {
 }
 
 .dashboard .cities {
-  flex-grow: 2;
   list-style: none;
   padding: 0;
   margin: 0;
   margin-right: 15px;
+}
+
+.dashboard .selectCity, .dashboard .addCity {
+  flex-grow: 2;
+}
+
+.dashboard .extrapolator {
+  width: 120px;
 }
 
 .dashboard .select__menu, .dashboard .select__control {
@@ -156,7 +184,12 @@ nav .account:hover {
 
 .dashboard .select__value-container {
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
+}
+
+.dashboard .extrapolator .select__value-container {
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .dashboard .select__menu-list {
@@ -186,7 +219,7 @@ nav .account:hover {
   background: var(--color-brand);
 }
 
-.dashboard .add:nth-child(2) {
+.dashboard .add .extrapolator, .dashboard .addcity, .dashboard .submit {
   margin-right: 15px;
 }
 
@@ -224,9 +257,17 @@ nav .account:hover {
 }
 
 .dashboard .deleteCity {
-  text-align: right;
-  margin-top: 10px;
+  display: flex;
+  margin-top: calc(var(--base-margin)/2);
   font-size: 0.92rem;
+}
+
+.dashboard .deleteCity a:first-child {
+  flex-grow: 2;
+}
+
+.dashboard .deleteCity a:nth-child(2) {
+  
 }
 
 .dashboard .deleteCity a {
@@ -242,14 +283,14 @@ nav .account:hover {
   margin: 0;
   border-collapse: collapse;
   font-size: 1.1rem;
-  letter-spacing: -0.5px;
+  /* letter-spacing: -0.5px; */
 }
 
 .bills .colorId {
   width: 8px;
   height: 8px;
   display: inline-block;
-  margin-right: .8rem;
+  margin-right: .6rem;
   vertical-align: middle;
   margin-top: -3px;
 }
@@ -297,7 +338,7 @@ nav .account:hover {
 }
 
 .bills .buttons {
-  width: 150px;
+  width: 100px;
   text-align: center;
 }
 
@@ -368,7 +409,7 @@ form .error {
 footer {
   font-size: 0.8rem;
   opacity: 0.6;
-  margin: calc(var(--base-margin)/2) auto;
+  margin: calc(var(--base-margin)/3) auto;
   display: flex;
   vertical-align: middle;
 }
@@ -393,11 +434,23 @@ footer .active {
 
 /* Media Queries */
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 900px) {
+  .App {
+    width: var(--mid-size);
+  }
+  .dashboard .add span {
+    display: none;
+  }
+  table th, table td {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
   .App {
     width: var(--mobile-size);
   }
-  .dashboard .add span {
+  table th:nth-child(3), table td:nth-child(3) {
     display: none;
   }
 }

@@ -49,7 +49,7 @@ class EditBill extends Component {
                         <textarea rows="3" id="description" maxLength="140" placeholder={this.props.bill ? this.props.bill.description : null} onChange={this.handleChange}/>
                     </div>
                     <div className="input">
-                        <label htmlFor="cost">Cost</label>
+                        <label htmlFor="cost">Cost (per month)</label>
                         <input type="number" id="cost" placeholder={this.props.bill ? this.props.bill.cost : null} onChange={this.handleChange}/>
                     </div>
                     <div className="input">
