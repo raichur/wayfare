@@ -66,13 +66,16 @@ class Dashboard extends Component {
             return <Redirect to='/login' />
         }
         
-        if (cities) {
+        if (cities && profile && cities.find(function(city) {return city.id === profile.currentcity})) {
             this.state.currentCityName = cities.find(function(city) {return city.id === profile.currentcity}).name;
         }
         
+        
         if (bills && profile) { 
-            this.getDiscretionary(bills, profile)
+            this.getDiscretionary(bills, profile);
+            
         }
+
 
         // Chart Stuff
         let chartLabels = [];
@@ -129,7 +132,7 @@ class Dashboard extends Component {
             {value: '24', label: '2 years'}
         ];
         
-        defaults.global.defaultFontFamily = 'San Francisco';
+        defaults.global.defaultFontFamily = '-apple-system, BlinkMacSystemFont, "SF Display", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif';
 
         // Extrapolation
         const deleteCityListener = (e) => {
@@ -146,6 +149,8 @@ class Dashboard extends Component {
                 this.props.deleteCity(e.target);
             }
         }
+
+        
 
 
         return (
@@ -171,7 +176,7 @@ class Dashboard extends Component {
                 { this.state.showAddCity &&
                 <div className="controls addCityInputContainer">
                     <CityAddInput cities={cities} userid={auth.uid} currentcity={profile.currentcity} />
-                    <Link to='/' className="add cancel" onClick={this.state.toggleAddCity.bind(this)}>Cancel</Link>
+                    <Link to='/' className="add cancel" onClick={this.state.toggleAddCity.bind(this)}>Done</Link>
                 </div>
                 }
                 { !this.state.showAddCity &&
@@ -183,6 +188,7 @@ class Dashboard extends Component {
                         options={extrapolateList}
                         classNamePrefix="select"
                         isSearchable={false}
+                        blurResetsInput={false}
                         onChange={this.extrapolate.bind(this)}
                         defaultValue={extrapolateList[0]}
                         />

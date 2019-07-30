@@ -10,7 +10,8 @@ class CityAddInput extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentInput: ''
+            currentInput: '',
+            showAddCity: true
         }
     }
 
@@ -34,6 +35,7 @@ class CityAddInput extends Component {
     createCity = (e) => {
         e.preventDefault()
         this.props.createCity(this.state.currentInput);
+        this.setState({ showAddCity: false })
     }
     
     render() {
@@ -41,10 +43,6 @@ class CityAddInput extends Component {
             <>
              <ul className="cities addCity">
                  { this.props.cities ?
-                <>
-                {/* <div className="addCityInput">
-                    <input type="text" id="city" maxLength="50" placeholder="e.g. Austin" onKeyDown={this.checkForEnter} onChange={this.cityInputChange}/>
-                </div> */}
                 <Creatable
                 name="city"
                 autoFocus="true"
@@ -56,7 +54,6 @@ class CityAddInput extends Component {
                 loadOptions={this.getCities.bind(this)}
                 onChange={this.cityInputChange}
                 />
-                </>
                 : null}
             </ul>
             <Link to='/' className="add submit" onClick={this.createCity}>Submit</Link>

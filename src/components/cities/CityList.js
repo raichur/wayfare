@@ -5,11 +5,23 @@ import Select from 'react-select';
 
 class CityList extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchable: true
+        }
+    }
+
     changeCurrentCity = (e) => {
         this.props.changeCurrentCity(e.value);
     }
     
     render() {
+
+        if (window.innerWidth <= 700) {
+            this.state.searchable = false;
+        }
+
         let cityList = [];
         if (this.props.cities) {
             this.props.cities.map(city => {
@@ -22,7 +34,8 @@ class CityList extends Component {
                 <Select 
                 options={cityList}
                 classNamePrefix="select"
-                isSearchable={true}
+                blurResetsInput={false}
+                isSearchable={this.state.searchable}
                 onChange={this.changeCurrentCity}
                 defaultValue={cityList.filter(option => option.value === this.props.currentcity)}
                 />

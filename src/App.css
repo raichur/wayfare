@@ -12,13 +12,13 @@
   --color-error: #f23c76;
   --base-margin: 30px;
   --desktop-size: 700px;
-  --mid-size: calc(100% - 120px);
-  --mobile-size: calc(100% - 60px);
+  --mid-size: calc(100% - 70px);
+  --mobile-size: calc(100% - 25px);
 }
 
 * {
   box-sizing: border-box;
-  font-family: 'San Francisco';
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Display', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 html, body {
@@ -319,7 +319,7 @@ nav .account.active {
 }
 
 .bills td, .bills th {
-  vertical-align: top;
+  /* vertical-align: top; */
   border-left: 1px solid var(--color-div);
   border-right: 1px solid var(--color-div);
   padding: .4rem .75rem;
@@ -360,6 +360,7 @@ form .input input, form .input textarea {
   border: none;
   font-size: 1.1rem;
   font-family: inherit;
+  border-radius: 0;
   border: 1px solid var(--color-divsolid);
 }
 
@@ -368,6 +369,7 @@ form .input input[type="color"], input[type="color"]::-webkit-color-swatch-wrapp
   outline: 0;
   border: none;
   cursor: pointer;
+  border-radius: 0;
 }
 
 form .input input:focus, form .input textarea:focus {
@@ -432,6 +434,10 @@ footer .active {
   font-weight: bold;
 }
 
+.bridge {
+  display: none;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 900px) {
@@ -450,7 +456,66 @@ footer .active {
   .App {
     width: var(--mobile-size);
   }
+  table th, table td {
+    font-size: 0.9rem;
+  }
+  table td {
+    padding: .3rem .6rem !important;
+  }
   table th:nth-child(3), table td:nth-child(3) {
     display: none;
+  }
+  .dashboard .select__value-container {
+    font-size: 0.8rem;
+  }
+  
+  .dashboard .extrapolator .select__value-container {
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+  
+  .dashboard .select__menu-list {
+    padding: 0;
+  }
+
+  .dashboard .cityListContainer {
+    margin: .6rem 0;
+  }
+  .dashboard .cities, .dashboard .addcity, .dashboard .submit {
+    margin-right: 8px;
+  }
+  .dashboard .add {
+    font-size: .8rem;
+    padding-left: .6rem;
+    padding-right: .6rem;
+  }
+  .controls .extrapolator {
+    width: 100px;
+  }
+  nav ul {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  .dashboard .net {
+    margin: 0 0 2rem 0;
+  }
+  .dashboard .select__indicator {
+    padding: 8px 5px !important;
+  }
+  .dashboard .select__indicator-separator {
+    display: none;
+  }
+  .titleContainer h1 span {
+    font-size: 2rem !important;
+    margin-left: 3px !important;
+  }
+  .dashboard .net br {
+    margin: 10px 0 !important;
+  }
+  footer, .deleteCity a {
+    font-size: 0.7rem;
+  }
+  .deleteCity, footer p {
+    margin: 5px 0;
   }
 }

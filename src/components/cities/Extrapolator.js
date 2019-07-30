@@ -33,6 +33,7 @@ class Extrapolator extends Component {
                 options={extrapolateList}
                 classNamePrefix="select"
                 isSearchable={true}
+                blurResetsInput={false}
                 onChange={this.changeCurrentCity}
                 defaultValue={extrapolateList[0]}
                 />
