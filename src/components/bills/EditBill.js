@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { updateBill } from '../../store/actions/billActions';
@@ -49,14 +49,17 @@ class EditBill extends Component {
                         <textarea rows="3" id="description" maxLength="140" placeholder={this.props.bill ? this.props.bill.description : null} onChange={this.handleChange}/>
                     </div>
                     <div className="input">
-                        <label htmlFor="cost">Cost (per month)</label>
+                        <label htmlFor="cost">Cost ($ per month)</label>
                         <input type="number" id="cost" placeholder={this.props.bill ? this.props.bill.cost : null} onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="color">Color</label>
                         <input type="color" id="color" onChange={this.handleChange}/>
                     </div>
-                    <button type="submit">Submit Changes</button>
+                    <div className="addBillButtonContainer">
+                        <button className="addBill" type="submit">Add Bill</button>
+                        <Link to='/' className="cancelBill">Cancel</Link>
+                    </div>
                 </form>
             </div>
         )

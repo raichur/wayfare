@@ -384,7 +384,7 @@ form .input {
 
 form button {
   outline: none;
-  padding: .9em .75em;
+  padding: .8em .75em;
   width: 100%;
   border: 0;
   background: var(--color-text);
@@ -392,6 +392,31 @@ form button {
   font-family: inherit;
   cursor: pointer;
   font-size: 1.05rem;
+}
+
+.addBillButtonContainer {
+  display: flex;
+}
+.addBill {
+  flex-grow: 2;
+}
+.cancelBill {
+  width: 150px;
+  outline: none;
+  padding: .8em .75em;
+  margin-left: 15px;
+  text-align: center;
+  text-decoration: none;
+  border: 0;
+  background: var(--color-darkgray);
+  color: var(--color-bg);
+  font-family: inherit;
+  cursor: pointer;
+  font-size: 1.05rem;
+}
+.cancelBill:hover {
+  background: var(--color-lightgray);
+  color: var(--color-bg);
 }
 
 form button:hover {

@@ -51,7 +51,7 @@ class Signup extends Component {
                         <input type="email" id="email" required onChange={this.handleChange}/>
                     </div>
                     <div className="input">
-                        <label htmlFor="income">Monthly Income</label>
+                        <label htmlFor="income">Monthly Income ($)</label>
                         <input type="number" id="income" required onChange={this.handleChange}/>
                     </div>
                     <div className="input">

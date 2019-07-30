@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { createBill } from '../../store/actions/billActions';
 
 class AddBill extends Component {
@@ -50,14 +50,17 @@ class AddBill extends Component {
                         <textarea id="description" maxLength="140" placeholder="2 bedroom place in downtown Austin" rows="3" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
-                        <label htmlFor="cost">Cost (per month)</label>
+                        <label htmlFor="cost">Cost ($ per month)</label>
                         <input type="number" required id="cost" placeholder="1400" onChange={this.handleChange}/>
                     </div>
                     <div className="input">
                         <label htmlFor="color">Color</label>
                         <input type="color" id="color" onChange={this.handleChange}/>
                     </div>
-                    <button type="submit">Add Bill</button>
+                    <div className="addBillButtonContainer">
+                        <button className="addBill" type="submit">Add Bill</button>
+                        <Link to='/' className="cancelBill">Cancel</Link>
+                    </div>
                 </form>
             </div>
         )

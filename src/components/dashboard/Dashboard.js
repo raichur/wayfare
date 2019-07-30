@@ -208,7 +208,7 @@ class Dashboard extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {    
     return {
         bills: state.firestore.ordered.bills,
         cities: state.firestore.ordered.cities,

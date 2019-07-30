@@ -48,7 +48,7 @@ class EditAccount extends Component {
                         <input type="text" id="lastName" placeholder={profile ? profile.lastName : null} onChange={this.handleChange}/>
                     </div>
                     <div className="input">
-                        <label htmlFor="income">Monthly Income</label>
+                        <label htmlFor="income">Monthly Income ($)</label>
                         <input type="number" id="income" placeholder={profile ? profile.income : null} onChange={this.handleChange}/>
                     </div>
                     <div className="input disabled">
