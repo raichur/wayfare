@@ -6,8 +6,16 @@ You tell Wayfare your monthly income and fixed monthly expenses, and Wayfare wil
 
 That's about it. There's not much to it. It's just a tool I personally needed but didn't find. So I made it myself.
 
-![Demo](https://media.giphy.com/media/h3tZWWhh7izdZRqmC8/giphy.gif "Demo")
-
 It's built using React, Redux, Firebase, and a few other libraries.
 
-WIP.
+
+![Demo](https://wayfare.rchr.co/demo.gif)
+
+## [Demo](https://wayfare.rchr.co/login)
+
+#### Demo login info:
+
+Email: joshua.raichur@gmail.com
+Password: test1234
+
+It's still a work in progress and currently super buggy.

@@ -6,7 +6,7 @@ class Faq extends Component {
             <div className="faq">
                 <h1>FAQ</h1>
                 <h3>What is Wayfare?</h3>
-                <p>Wayfare is a simple app made to help you easily calculate your discretionary income. It's tailored for nomads and prople who work remotely and travel often, hence the name.</p>
+                <p>Wayfare is a simple app made to help you easily calculate your discretionary income. It's tailored for nomads and people who work remotely and travel often, hence the name.</p>
                 <p>
                     You tell Wayfare your monthly income and fixed monthly expenses, and Wayfare will show you how much you have left to safely use. 
                     You can add multiple cities with different monthly expenses, and Wayfare will do the math for you. 
